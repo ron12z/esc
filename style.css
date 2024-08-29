@@ -1,0 +1,97 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+body {
+	flex-grow: 1;
+	min-height: 100vh;
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	color: rgb(27, 20, 20);
+	background: rgb(179, 199, 223);
+}
+
+main {
+	background: rgb(235, 251, 255);
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+}
+
+.result {
+	background: rgb(163, 169, 199);
+	display: flex;
+	gap: 1rem;
+	min-height: 4rem;
+	border-radius: 5px;
+	padding: 0.4rem;
+}
+
+#escalation {
+	flex-grow: 1;
+	min-height: inherit;
+	text-wrap: wrap;
+}
+
+#escalation::after {
+	content: " -Click to copy.";
+	color: black;
+	opacity: 0.5;
+}
+
+.result,
+#escalation,
+.Selections {
+	cursor: pointer;
+	width: 50%;
+}
+
+.Selections {
+	display: flex;
+	flex-direction: column;
+}
+
+.selection {
+	border: 1px solid black;
+	background: rgba(161, 161, 161, 0.623);
+	min-height: 3rem;
+	height: auto;
+	display: flex;
+	align-items: center;
+	padding: 0.4rem;
+}
+
+button#reset {
+	padding: 1rem;
+}
+
+.checked {
+	background: rgb(184, 236, 184);
+}
+
+footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+	background: rgb(53, 53, 53);
+	color: white;
+}

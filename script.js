@@ -1,4 +1,5 @@
 // Variables
+const result = document.querySelector(".result");
 const escalation = document.querySelector("#escalation");
 const options = document.querySelector(".options");
 const suspended = document.querySelector("#suspended");
@@ -13,7 +14,56 @@ const user = document.querySelector("#user");
 const outside = document.querySelector("#outside");
 const newloc = document.querySelector("#newloc");
 
-//Helper functions
+const selectionDivs = document.querySelectorAll(".selection");
+const resetBtn = document.querySelector("#reset");
+
+// Event listeners
+selectionDivs.forEach((div) => {
+	div.addEventListener("click", () => {
+		div.classList.toggle("checked");
+		updateResult();
+	});
+});
+
+resetBtn.addEventListener("click", () => {
+	selectionDivs.forEach((div) => {
+		div.classList.remove("checked");
+		updateResult();
+	});
+});
+
+// For copying escalation
+escalation.addEventListener("click", () => {
+	const textToCopy = escalation.textContent;
+
+	// Copy the text to the clipboard
+	navigator.clipboard
+		.writeText(textToCopy)
+		.then(() => {
+			// Display a "Copied to clipboard" popup
+			const popup = document.createElement("div");
+			popup.textContent = "Copied to clipboard!";
+			popup.style.position = "fixed";
+			popup.style.top = "20px";
+			popup.style.right = "20px";
+			popup.style.padding = "10px";
+			popup.style.backgroundColor = "green";
+			popup.style.color = "white";
+			popup.style.borderRadius = "5px";
+			document.body.appendChild(popup);
+
+			// Hide the popup after a short delay
+			setTimeout(() => {
+				popup.remove();
+			}, 2000); // 2000 milliseconds (2 seconds)
+		})
+		.catch((err) => {
+			console.error("Could not copy text: ", err);
+			// You might want to display an error message to the user here
+		});
+});
+
+// Helper functions
 function isChecked(element) {
 	if (element.classList.contains("checked")) {
 		return true;
@@ -22,8 +72,17 @@ function isChecked(element) {
 	}
 }
 
-//Main function
+// For updating DOM
+function updateResult() {
+	escalation.textContent = GenerateText();
+}
+
+// Main function
 function GenerateText() {
+	const anyChecked = Array.from(selectionDivs).some((div) =>
+		div.classList.contains("checked")
+	);
+
 	let result = "Escalating Case - ";
 	let first_escalation = true;
 
@@ -32,7 +91,7 @@ function GenerateText() {
 			result += "Account is suspended";
 			first_escalation = false;
 		} else {
-			result += " and account is suspended";
+			result += ", and account is suspended";
 		}
 	}
 
@@ -42,7 +101,7 @@ function GenerateText() {
 			result += "Name mismatch";
 			first_escalation = false;
 		} else {
-			result += "and name mismatch";
+			result += ", and name mismatch";
 		}
 	}
 
@@ -51,7 +110,7 @@ function GenerateText() {
 			result += "Email mismatch";
 			first_escalation = false;
 		} else {
-			result += "Email mismatch";
+			result += ", and email mismatch";
 		}
 	}
 
@@ -60,7 +119,7 @@ function GenerateText() {
 			result += "Has lost/stolen card";
 			first_escalation = false;
 		} else {
-			result += "Has lost/stolen card";
+			result += ", and has lost/stolen card";
 		}
 	}
 
@@ -70,7 +129,7 @@ function GenerateText() {
 			result += "SA1";
 			first_escalation = false;
 		} else {
-			result += "SA1";
+			result += ", and SA1";
 		}
 	}
 
@@ -80,7 +139,7 @@ function GenerateText() {
 			result += "SA2";
 			first_escalation = false;
 		} else {
-			result += "SA2";
+			result += ", and SA2";
 		}
 	}
 
@@ -89,48 +148,53 @@ function GenerateText() {
 			result += "Cashed out";
 			first_escalation = false;
 		} else {
-			result += "Cashed out";
+			result += ", and cashed out";
 		}
 	}
 
 	if (isChecked(short)) {
 		if (first_escalation) {
-			result += "";
+			result += "Has short odds";
 			first_escalation = false;
 		} else {
-			result += "";
+			result += ", and short odds";
 		}
 	}
 
 	if (isChecked(user)) {
 		//Get number of related users
 		if (first_escalation) {
-			result += "";
+			result += "Has 4 related users";
 			first_escalation = false;
 		} else {
-			result += "";
+			result += ", and 4 related users";
 		}
 	}
 
 	if (isChecked(outside)) {
 		if (first_escalation) {
-			result += "";
+			result += "Client is outside US";
 			first_escalation = false;
 		} else {
-			result += "";
+			result += ", and outside US";
 		}
 	}
 
 	if (isChecked(newloc)) {
 		if (first_escalation) {
-			result += "";
+			result += "New device in a new location";
 			first_escalation = false;
 		} else {
-			result += "";
+			result += ", and new device in a new location";
 		}
+	}
+
+	result += ".";
+
+	if (!anyChecked) {
+		result = "No Escalations - Good to approve";
 	}
 	return result;
 }
-console.log(isChecked(suspended));
 
-console.log("test");
+updateResult();
