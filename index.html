@@ -4,6 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Escalator</title>
+		<script src="script.js" defer></script>
 	</head>
 	<body>
 		<header>
@@ -15,20 +16,24 @@
 				<p id="escalation">Escalating case:</p>
 			</div>
 			<div class="options">
-				<div id="suspended">Account is suspended</div>
-				<div id="name">Name mismatch</div>
-				<div id="email">Email mismatch</div>
-				<div id="lost">Has lost/stolen in the past 7 days</div>
-				<div id="sa1">
+				<div id="suspended" class="checked">Account is suspended</div>
+				<div id="name" class="checked">Name mismatch</div>
+				<div id="email" class="checked">Email mismatch</div>
+				<div id="lost" class="checked">Has lost/stolen in the past 7 days</div>
+				<div id="sa1" class="checked">
 					Suspicious Activity 1 - withdrawing larger amount to a card used for
 					smaller deposit
 				</div>
-				<div id="sa2">Suspicious Activity 2 - multiple debit cards</div>
-				<div id="cashed">Cashed out before withdrawal</div>
-				<div id="short">Has short odd bets before withdrawal</div>
-				<div id="user">Has 4 or more related users</div>
-				<div id="outside">Outside US</div>
-				<div id="newloc">New device in a new location</div>
+				<div id="sa2" class="checked">
+					Suspicious Activity 2 - multiple debit cards
+				</div>
+				<div id="cashed" class="checked">Cashed out before withdrawal</div>
+				<div id="short" class="checked">
+					Has short odd bets before withdrawal
+				</div>
+				<div id="user" class="checked">Has 4 or more related users</div>
+				<div id="outside" class="checked">Outside US</div>
+				<div id="newloc" class="checked">New device in a new location</div>
 			</div>
 		</main>
 
