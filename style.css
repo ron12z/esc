@@ -49,6 +49,7 @@ main {
 	flex-grow: 1;
 	min-height: inherit;
 	text-wrap: wrap;
+	caret-color: transparent;
 }
 
 #escalation::after {
@@ -77,10 +78,13 @@ main {
 	display: flex;
 	align-items: center;
 	padding: 0.4rem;
+	caret-color: transparent;
 }
 
 button#reset {
 	padding: 1rem;
+	border-radius: 10px;
+	border: none;
 }
 
 .checked {
