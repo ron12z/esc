@@ -102,35 +102,33 @@ function GenerateText() {
 		}
 	}
 
+	if (isChecked(user)) {
+		//Get number of related users
+		if (first_escalation) {
+			result += "";
+			first_escalation = false;
+		} else {
+			result += "";
+		}
+	}
+
+	if (isChecked(outside)) {
+		if (first_escalation) {
+			result += "";
+			first_escalation = false;
+		} else {
+			result += "";
+		}
+	}
+
+	if (isChecked(newloc)) {
+		if (first_escalation) {
+			result += "";
+			first_escalation = false;
+		} else {
+			result += "";
+		}
+	}
 	return result;
 }
-
-if (isChecked(user)) {
-	//Get number of related users
-	if (first_escalation) {
-		result += "";
-		first_escalation = false;
-	} else {
-		result += "";
-	}
-}
-
-if (isChecked(outside)) {
-	if (first_escalation) {
-		result += "";
-		first_escalation = false;
-	} else {
-		result += "";
-	}
-}
-
-if (isChecked(newloc)) {
-	if (first_escalation) {
-		result += "";
-		first_escalation = false;
-	} else {
-		result += "";
-	}
-}
-
 console.log(isChecked(suspended));
