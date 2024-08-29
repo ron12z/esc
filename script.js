@@ -132,3 +132,5 @@ function GenerateText() {
 	return result;
 }
 console.log(isChecked(suspended));
+
+console.log("test");
