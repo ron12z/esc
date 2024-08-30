@@ -86,149 +86,149 @@ function GenerateText() {
 		div.classList.contains("checked")
 	);
 
-	let result = "Escalating Case - ";
+	let result = [];
 	let first_escalation = true;
 
 	if (isChecked(amount)) {
 		if (first_escalation) {
-			result += "WD greater than $5k";
+			result.push("WD greater than $5k");
 			first_escalation = false;
 		} else {
-			result += ", and WD greater than $5k";
+			result.push("WD greater than $5k");
 		}
 	}
 
 	if (isChecked(suspended)) {
 		if (first_escalation) {
-			result += "Account is suspended/closed";
+			result.push("Account is suspended/closed");
 			first_escalation = false;
 		} else {
-			result += ", and account is suspended/closed";
+			result.push("account is suspended/closed");
 		}
 	}
 
 	if (isChecked(name1)) {
 		//Get names
 		if (first_escalation) {
-			result += "2 different names on account Name1 & Name2";
+			result.push("2 different names on account Name1 & Name2");
 			first_escalation = false;
 		} else {
-			result += ", and has 2 different names on account Name1 & Name2";
+			result.push("has 2 different names on account Name1 & Name2");
 		}
 	}
 
 	if (isChecked(email)) {
 		if (first_escalation) {
-			result += "account less than 1 month old with email name mismatch";
+			result.push("account less than 1 month old with email name mismatch");
 			first_escalation = false;
 		} else {
-			result += ", and account less than 1 month old with email name mismatch";
+			result.push("account less than 1 month old with email name mismatch");
 		}
 	}
 
 	if (isChecked(lost)) {
 		if (first_escalation) {
-			result += "(Card number) has been reported lost or stolen";
+			result.push("(Card number) has been reported lost or stolen");
 			first_escalation = false;
 		} else {
-			result += ", and (Card number) has been reported lost or stolen";
+			result.push("(Card number) has been reported lost or stolen");
 		}
 	}
 
 	if (isChecked(sa1)) {
 		//Get cards
 		if (first_escalation) {
-			result +=
-				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)";
+			result.push("withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)");
 			first_escalation = false;
 		} else {
-			result +=
-				", and withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)";
+			result.push("withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)");
 		}
 	}
 
 	if (isChecked(sa2)) {
 		//Get cards
 		if (first_escalation) {
-			result +=
-				"Customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)";
+			result.push("Customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)");
 			first_escalation = false;
 		} else {
-			result +=
-				", and customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)";
+			result.push("customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)");
 		}
 	}
 
 	if (isChecked(cashed)) {
 		if (first_escalation) {
-			result += "Cashed out bet before the latest withdrawal";
+			result.push("Cashed out bet before the latest withdrawal");
 			first_escalation = false;
 		} else {
-			result += ", and cashed out bet before the latest withdrawal";
+			result.push("cashed out bet before the latest withdrawal");
 		}
 	}
 
 	if (isChecked(short)) {
 		if (first_escalation) {
-			result += "Short odds bet placement";
+			result.push("Short odds bet placement");
 			first_escalation = false;
 		} else {
-			result += ", and has short odds bet placement";
+			result.push("has short odds bet placement");
 		}
 	}
 
 	if (isChecked(user)) {
 		//Get number of related users
 		if (first_escalation) {
-			result += "Account is sharing a device with (x) related users";
+			result.push("Account is sharing a device with (x) related users");
 			first_escalation = false;
 		} else {
-			result += ", and account is sharing a device with (x) related users";
+			result.push("account is sharing a device with (x) related users");
 		}
 	}
 
 	if (isChecked(outside)) {
 		if (first_escalation) {
-			result += "Account is Geo locating outside of the US";
+			result.push("Account is Geo locating outside of the US");
 			first_escalation = false;
 		} else {
-			result += ", and account is Geo locating outside of the US";
+			result.push("account is Geo locating outside of the US");
 		}
 	}
 
 	if (isChecked(newloc)) {
 		if (first_escalation) {
-			result += "Account is on a new device in a new location";
+			result.push("Account is on a new device in a new location");
 			first_escalation = false;
 		} else {
-			result += ", account is on a new device in a new location";
+			result.push("account is on a new device in a new location");
 		}
 	}
 
 	if (isChecked(state)) {
 		if (first_escalation) {
-			result += "(State) Account, no license";
+			result.push("(State) Account, no license");
 			first_escalation = false;
 		} else {
-			result += ", and (State) Account, no license";
+			result.push("(State) Account, no license");
 		}
 	}
 
 	if (isChecked(initial)) {
 		if (first_escalation) {
-			result += "No intials deposit";
+			result.push("No intials deposit");
 			first_escalation = false;
 		} else {
-			result += ", and no intials deposit";
+			result.push("no intials deposit");
 		}
 	}
 
-	result += ".";
-
 	if (!anyChecked) {
-		result = "No Escalations - Good to approve";
+		return "No Escalations - Good to approve";
 	}
-	return result;
+
+	if (result.length > 1) {
+		result = result.slice(0, -1).join(', ') + ', and '+result.slice(-1)
+	}
+	
+	return 'Escalating case - ' + result + '.';
+
 }
 
 updateResult();
