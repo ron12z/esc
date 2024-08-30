@@ -14,6 +14,8 @@ const short = document.querySelector("#short");
 const user = document.querySelector("#user");
 const outside = document.querySelector("#outside");
 const newloc = document.querySelector("#newloc");
+const state = document.querySelector("#state");
+const initial = document.querySelector("#initial");
 
 const selectionDivs = document.querySelectorAll(".selection");
 const resetBtn = document.querySelector("#reset");
@@ -89,49 +91,47 @@ function GenerateText() {
 
 	if (isChecked(amount)) {
 		if (first_escalation) {
-			result += "Withdrawal amount is greater than $5,000";
+			result += "WD greater than $5k";
 			first_escalation = false;
 		} else {
-			result += ", and withdrawal amount is greater than $5,000";
+			result += ", and WD greater than $5k";
 		}
 	}
 
 	if (isChecked(suspended)) {
 		if (first_escalation) {
-			result += "Account is suspended";
+			result += "Account is suspended/closed";
 			first_escalation = false;
 		} else {
-			result += ", and account is suspended";
+			result += ", and account is suspended/closed";
 		}
 	}
 
 	if (isChecked(name1)) {
 		//Get names
 		if (first_escalation) {
-			result += "Multiple names in account - (name1), (name2)";
+			result += "2 different names on account Name1 & Name2";
 			first_escalation = false;
 		} else {
-			result += ", and has multiple names in account - (name1), (name2)";
+			result += ", and has 2 different names on account Name1 & Name2";
 		}
 	}
 
 	if (isChecked(email)) {
 		if (first_escalation) {
-			result +=
-				"Account is less than 1 month old with email mismatch - (email1)";
+			result += "account less than 1 month old with email name mismatch";
 			first_escalation = false;
 		} else {
-			result +=
-				", and account is less than 1 month old with email mismatch - (email1)";
+			result += ", and account less than 1 month old with email name mismatch";
 		}
 	}
 
 	if (isChecked(lost)) {
 		if (first_escalation) {
-			result += "(Card1) has been reported lost or stolen";
+			result += "(Card number) has been reported lost or stolen";
 			first_escalation = false;
 		} else {
-			result += ", and (Card1) has been reported lost or stolen";
+			result += ", and (Card number) has been reported lost or stolen";
 		}
 	}
 
@@ -139,11 +139,11 @@ function GenerateText() {
 		//Get cards
 		if (first_escalation) {
 			result +=
-				"Withdrawing to a payment method (card1) used for small deposit with larger deposits made from (card2)";
+				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)";
 			first_escalation = false;
 		} else {
 			result +=
-				", and withdrawing to a payment method (card1) used for small deposit with larger deposits made from (card2)";
+				", and withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)";
 		}
 	}
 
@@ -161,16 +161,16 @@ function GenerateText() {
 
 	if (isChecked(cashed)) {
 		if (first_escalation) {
-			result += "Cashed out bet before withdrawal";
+			result += "Cashed out bet before the latest withdrawal";
 			first_escalation = false;
 		} else {
-			result += ", and cashed out bet before withdrawal";
+			result += ", and cashed out bet before the latest withdrawal";
 		}
 	}
 
 	if (isChecked(short)) {
 		if (first_escalation) {
-			result += "Has short odds bet placement";
+			result += "Short odds bet placement";
 			first_escalation = false;
 		} else {
 			result += ", and has short odds bet placement";
@@ -189,10 +189,10 @@ function GenerateText() {
 
 	if (isChecked(outside)) {
 		if (first_escalation) {
-			result += "Account is Geo-locating outside US";
+			result += "Account is Geo locating outside of the US";
 			first_escalation = false;
 		} else {
-			result += ", and account is Geo-locating outside US";
+			result += ", and account is Geo locating outside of the US";
 		}
 	}
 
@@ -202,6 +202,24 @@ function GenerateText() {
 			first_escalation = false;
 		} else {
 			result += ", account is on a new device in a new location";
+		}
+	}
+
+	if (isChecked(state)) {
+		if (first_escalation) {
+			result += "(State) Account, no license";
+			first_escalation = false;
+		} else {
+			result += ", and (State) Account, no license";
+		}
+	}
+
+	if (isChecked(initial)) {
+		if (first_escalation) {
+			result += "No intials deposit";
+			first_escalation = false;
+		} else {
+			result += ", and no intials deposit";
 		}
 	}
 
