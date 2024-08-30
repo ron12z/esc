@@ -82,6 +82,7 @@ main {
 }
 
 button#reset {
+	cursor: pointer;
 	padding: 1rem;
 	border-radius: 10px;
 	border: none;
