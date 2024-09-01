@@ -44,6 +44,8 @@ main {
 	min-height: 4rem;
 	border-radius: 5px;
 	padding: 0.4rem;
+	border-radius: 0.5rem 0.5rem 0 0;
+	border: 1px solid black;
 }
 
 #escalation {
@@ -86,7 +88,7 @@ button#reset {
 	cursor: pointer;
 	padding: 1rem;
 	border-radius: 10px;
-	border: none;
+	border: 1.5px solid grey;
 }
 
 .checked {
