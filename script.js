@@ -304,12 +304,12 @@ function GenerateText() {
 		const input_fields_content = getInputFieldContents(user_number);
 		if (first_escalation) {
 			result.push(
-				`Account is sharing a device with (${input_fields_content}) related users`
+				`Account is sharing a device with (${input_fields_content}) users`
 			);
 			first_escalation = false;
 		} else {
 			result.push(
-				`account is sharing a device with (${input_fields_content}) related users`
+				`account is sharing a device with (${input_fields_content}) users`
 			);
 		}
 	} else {
