@@ -30,9 +30,12 @@ const addMoreBtns = document.querySelectorAll("button.addMore");
 const sa1_card1 = document.querySelector("#sa1_card1");
 const sa1_card2 = document.querySelector("#sa1_card2");
 
+// Add initial input field listeners
 addInputFieldListeners();
 
 // Event listeners
+
+// Toggles "checked" status of selection divs when clicked
 selectionDivs.forEach((div) => {
 	div.addEventListener("click", () => {
 		div.classList.toggle("checked");
@@ -40,13 +43,28 @@ selectionDivs.forEach((div) => {
 	});
 });
 
+// Reset Button
 resetBtn.addEventListener("click", () => {
+	// Remove all input fields without placeholders, clear input fields with placeholders, then updateResult
+	const allInputFields = document.querySelectorAll("input");
 	selectionDivs.forEach((div) => {
 		div.classList.remove("checked");
-		updateResult();
 	});
+
+	// Remove input field if no placeholder, else just clear it
+	allInputFields.forEach((field) => {
+		if (!field.placeholder) {
+			field.remove();
+		} else {
+			field.value = "";
+		}
+	});
+
+	// Update result after processing input fields
+	updateResult();
 });
 
+// Adding input fields when "Add More" is clicked
 addMoreBtns.forEach((button) => {
 	button.addEventListener("click", () => {
 		const parent = button.parentNode;
@@ -90,6 +108,7 @@ escalation.addEventListener("click", () => {
 });
 
 // Helper functions
+// Add Input Field Listeners to all current input fields in DOM
 function addInputFieldListeners() {
 	const inputFields = document.querySelectorAll("input");
 	inputFields.forEach((field) => {
@@ -98,6 +117,8 @@ function addInputFieldListeners() {
 		});
 	});
 }
+
+// Checked if an element has "checked" class
 function isChecked(element) {
 	if (element.classList.contains("checked")) {
 		return true;
@@ -106,18 +127,22 @@ function isChecked(element) {
 	}
 }
 
+// Get Input Field Contents from target element and return formatted result
 function getInputFieldContents(target_element) {
+	// Initialize result
 	const result = [];
 
 	// Add input field content to result
 	const inputElements = target_element.querySelectorAll("input");
 
+	// Add each result to result list
 	inputElements.forEach((item) => {
 		if (item.value !== "") {
 			result.push(item.value);
 		}
 	});
 
+	// Return result
 	if (result.length <= 1) {
 		return result;
 	} else {
@@ -137,6 +162,7 @@ function getInputFieldContents(target_element) {
 	}
 }
 
+// Specific for SA1 input since it has fixed 2 inputs needed, and would also be used separately.
 function getSA1inputs() {
 	const result = [];
 	const inputElements = sa1_cards.querySelectorAll("input");
@@ -155,6 +181,7 @@ function updateResult() {
 }
 
 // Main function
+// Generating result text based on checked selections
 function GenerateText() {
 	const anyChecked = Array.from(selectionDivs).some((div) =>
 		div.classList.contains("checked")
