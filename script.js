@@ -26,6 +26,11 @@ const sa1_cards = document.querySelector("#sa1_cards");
 const sa2_cards = document.querySelector("#sa2_cards");
 const user_number = document.querySelector("#user_number");
 const state_name = document.querySelector("#state_name");
+const addMoreBtns = document.querySelectorAll("button.addMore");
+const sa1_card1 = document.querySelector("#sa1_card1");
+const sa1_card2 = document.querySelector("#sa1_card2");
+
+addInputFieldListeners();
 
 // Event listeners
 selectionDivs.forEach((div) => {
@@ -39,6 +44,17 @@ resetBtn.addEventListener("click", () => {
 	selectionDivs.forEach((div) => {
 		div.classList.remove("checked");
 		updateResult();
+	});
+});
+
+addMoreBtns.forEach((button) => {
+	button.addEventListener("click", () => {
+		const parent = button.parentNode;
+		const newField = document.createElement("input");
+		newField.type = "text";
+
+		parent.insertBefore(newField, button);
+		addInputFieldListeners();
 	});
 });
 
@@ -74,6 +90,14 @@ escalation.addEventListener("click", () => {
 });
 
 // Helper functions
+function addInputFieldListeners() {
+	const inputFields = document.querySelectorAll("input");
+	inputFields.forEach((field) => {
+		field.addEventListener("keyup", () => {
+			updateResult();
+		});
+	});
+}
 function isChecked(element) {
 	if (element.classList.contains("checked")) {
 		return true;
@@ -82,6 +106,49 @@ function isChecked(element) {
 	}
 }
 
+function getInputFieldContents(target_element) {
+	const result = [];
+
+	// Add input field content to result
+	const inputElements = target_element.querySelectorAll("input");
+
+	inputElements.forEach((item) => {
+		if (item.value !== "") {
+			result.push(item.value);
+		}
+	});
+
+	if (result.length <= 1) {
+		return result;
+	} else {
+		final_result = "";
+
+		for (let i = 0; i < result.length; i++) {
+			if (i === result.length - 1) {
+				final_result += `& ${result[i]}`;
+			} else if (i === result.length - 2) {
+				final_result += `${result[i]} `;
+			} else {
+				final_result += `${result[i]}, `;
+			}
+		}
+
+		return final_result;
+	}
+}
+
+function getSA1inputs() {
+	const result = [];
+	const inputElements = sa1_cards.querySelectorAll("input");
+
+	inputElements.forEach((item) => {
+		if (item.value !== "") {
+			result.push(item.value);
+		}
+	});
+
+	return result;
+}
 // For updating DOM
 function updateResult() {
 	escalation.textContent = GenerateText();
@@ -116,12 +183,14 @@ function GenerateText() {
 
 	if (isChecked(name1)) {
 		name_names.style.display = "flex";
+		const input_fields_content = getInputFieldContents(name_names);
+
 		//Get names
 		if (first_escalation) {
-			result.push("2 different names on account Name1 & Name2");
+			result.push(`2 different names on account: ${input_fields_content}`);
 			first_escalation = false;
 		} else {
-			result.push("has 2 different names on account Name1 & Name2");
+			result.push(`has 2 different names on account: ${input_fields_content}`);
 		}
 	} else {
 		name_names.style.display = "none";
@@ -138,11 +207,12 @@ function GenerateText() {
 
 	if (isChecked(lost)) {
 		lost_cards.style.display = "flex";
+		const input_fields_content = getInputFieldContents(lost_cards);
 		if (first_escalation) {
-			result.push("(Card number) has been reported lost or stolen");
+			result.push(`(${input_fields_content}) has been reported lost or stolen`);
 			first_escalation = false;
 		} else {
-			result.push("(Card number) has been reported lost or stolen");
+			result.push(`(${input_fields_content}) has been reported lost or stolen`);
 		}
 	} else {
 		lost_cards.style.display = "none";
@@ -150,14 +220,16 @@ function GenerateText() {
 
 	if (isChecked(sa1)) {
 		sa1_cards.style.display = "flex";
+		const sa1_card_details = getSA1inputs();
+
 		if (first_escalation) {
 			result.push(
-				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)"
+				`withdrawing to a payment method (${sa1_card_details[0]}) used for a small deposit with larger deposits made with (${sa1_card_details[1]})`
 			);
 			first_escalation = false;
 		} else {
 			result.push(
-				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)"
+				`withdrawing to a payment method (${sa1_card_details[0]}) used for a small deposit with larger deposits made with (${sa1_card_details[1]})`
 			);
 		}
 	} else {
@@ -166,14 +238,16 @@ function GenerateText() {
 
 	if (isChecked(sa2)) {
 		sa2_cards.style.display = "flex";
+		const input_fields_content = getInputFieldContents(sa2_cards);
+
 		if (first_escalation) {
 			result.push(
-				"Customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)"
+				`Customer has attempted to deposit with multiple debit cards in the past 24 hours - ${input_fields_content}`
 			);
 			first_escalation = false;
 		} else {
 			result.push(
-				"customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)"
+				`customer has attempted to deposit with multiple debit cards in the past 24 hours - ${input_fields_content}`
 			);
 		}
 	} else {
@@ -200,11 +274,16 @@ function GenerateText() {
 
 	if (isChecked(user)) {
 		user_number.style.display = "flex";
+		const input_fields_content = getInputFieldContents(user_number);
 		if (first_escalation) {
-			result.push("Account is sharing a device with (x) related users");
+			result.push(
+				`Account is sharing a device with (${input_fields_content}) related users`
+			);
 			first_escalation = false;
 		} else {
-			result.push("account is sharing a device with (x) related users");
+			result.push(
+				`account is sharing a device with (${input_fields_content}) related users`
+			);
 		}
 	} else {
 		user_number.style.display = "none";
@@ -230,11 +309,12 @@ function GenerateText() {
 
 	if (isChecked(state)) {
 		state_name.style.display = "flex";
+		const input_fields_content = getInputFieldContents(state_name);
 		if (first_escalation) {
-			result.push("(State) Account, no license");
+			result.push(`(${input_fields_content}) Account, no license`);
 			first_escalation = false;
 		} else {
-			result.push("(State) Account, no license");
+			result.push(`(${input_fields_content}) Account, no license`);
 		}
 	} else {
 		state_name.style.display = "none";
