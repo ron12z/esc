@@ -73,7 +73,8 @@ main {
 	flex-direction: column;
 }
 
-.selection {
+.selection,
+.additional-input {
 	border: 1px solid black;
 	background: rgba(161, 161, 161, 0.623);
 	min-height: 3rem;
@@ -82,6 +83,30 @@ main {
 	align-items: center;
 	padding: 0.4rem;
 	caret-color: transparent;
+}
+
+button#reset {
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	background: linear-gradient(to bottom, #fabfaf 5%, #ff775c 100%);
+	background-color: #fabfaf;
+	border-radius: 3px;
+	border: 1px solid #f55e3f;
+	display: inline-block;
+	cursor: pointer;
+	color: #120e12;
+	font-family: Arial;
+	font-size: 13px;
+	padding: 6px 24px;
+	text-decoration: none;
+	text-shadow: 0px 1px 0px #6b2304;
+}
+button#reset:hover {
+	background: linear-gradient(to bottom, #ff775c 5%, #fabfaf 100%);
+	background-color: #ff775c;
+}
+button#reset:active {
+	position: relative;
+	top: 1px;
 }
 
 button#reset {
@@ -104,4 +129,43 @@ footer {
 	padding: 1rem;
 	background: rgb(53, 53, 53);
 	color: white;
+}
+
+.additional-input {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	flex-grow: 1;
+	gap: 0.5rem;
+	cursor: default;
+}
+
+.input-fields {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+	flex-shrink: 1;
+}
+
+input {
+	padding: 0.2rem;
+	border-radius: 0.3rem;
+	border: none;
+}
+
+button.addMore {
+	background-color: #abf5bf;
+	border-radius: 0.6rem;
+	border: 1px solid #424a43;
+	display: inline-block;
+	cursor: pointer;
+	color: #3d1e3d;
+	padding: 0.3rem;
+}
+button.addMore:hover {
+	background-color: #306115;
+}
+button.addMore:active {
+	position: relative;
+	top: 1px;
 }
