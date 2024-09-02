@@ -20,6 +20,12 @@ const initial = document.querySelector("#initial");
 const selectionDivs = document.querySelectorAll(".selection");
 const resetBtn = document.querySelector("#reset");
 
+const name_names = document.querySelector("#name_names");
+const lost_cards = document.querySelector("#lost_cards");
+const sa1_cards = document.querySelector("#sa1_cards");
+const sa2_cards = document.querySelector("#sa2_cards");
+const user_number = document.querySelector("#user_number");
+
 // Event listeners
 selectionDivs.forEach((div) => {
 	div.addEventListener("click", () => {
@@ -108,6 +114,7 @@ function GenerateText() {
 	}
 
 	if (isChecked(name1)) {
+		name_names.style.display = "flex";
 		//Get names
 		if (first_escalation) {
 			result.push("2 different names on account Name1 & Name2");
@@ -115,6 +122,8 @@ function GenerateText() {
 		} else {
 			result.push("has 2 different names on account Name1 & Name2");
 		}
+	} else {
+		name_names.style.display = "none";
 	}
 
 	if (isChecked(email)) {
@@ -127,12 +136,15 @@ function GenerateText() {
 	}
 
 	if (isChecked(lost)) {
+		lost_cards.style.display = "flex";
 		if (first_escalation) {
 			result.push("(Card number) has been reported lost or stolen");
 			first_escalation = false;
 		} else {
 			result.push("(Card number) has been reported lost or stolen");
 		}
+	} else {
+		lost_cards.style.display = "none";
 	}
 
 	if (isChecked(sa1)) {

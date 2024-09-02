@@ -1,3 +1,7 @@
+:root {
+	--input_button: 1.8rem;
+}
+
 *,
 *::after,
 *::before {
@@ -16,6 +20,7 @@ body {
 	min-height: 100dvh;
 	display: flex;
 	flex-direction: column;
+	font-family: Cambria, serif;
 }
 
 header {
@@ -87,8 +92,8 @@ main {
 
 button#reset {
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
-	background: linear-gradient(to bottom, #fabfaf 5%, #ff775c 100%);
-	background-color: #fabfaf;
+	/* background: linear-gradient(to bottom, #fabfaf 5%, #ff775c 100%); */
+	background: #ff9d8a;
 	border-radius: 3px;
 	border: 1px solid #f55e3f;
 	display: inline-block;
@@ -101,12 +106,12 @@ button#reset {
 	text-shadow: 0px 1px 0px #6b2304;
 }
 button#reset:hover {
-	background: linear-gradient(to bottom, #ff775c 5%, #fabfaf 100%);
-	background-color: #ff775c;
+	/* background: linear-gradient(to bottom, #ff775c 5%, #fabfaf 100%); */
+	background: #c4533d;
 }
 button#reset:active {
 	position: relative;
-	top: 1px;
+	top: 3px;
 }
 
 button#reset {
@@ -154,9 +159,11 @@ input {
 	background: rgb(247, 247, 247);
 	padding-inline: 0.3rem;
 	caret-color: black;
+	height: var(--input_button);
 }
 
 button.addMore {
+	height: 0.7rem;
 	background-color: #abf5bf;
 	border-radius: 0.6rem;
 	border: 1px solid #424a43;
@@ -164,11 +171,16 @@ button.addMore {
 	cursor: pointer;
 	color: #3d1e3d;
 	padding: 0.3rem;
+	height: var(--input_button);
 }
 button.addMore:hover {
 	background-color: #306115;
 }
 button.addMore:active {
 	position: relative;
-	top: 1px;
+	top: 3px;
+}
+
+.additional-input {
+	/* display: none; */
 }

@@ -42,12 +42,19 @@
 					<div class="input-fields">
 						<input type="text" placeholder="Name 1" />
 						<input type="text" placeholder="Name 2" />
-						<button id="addNameBtn" class="addMore">Add More ➕</button>
+						<button id="addNameBtn" class="addMore">Add More</button>
 					</div>
 				</div>
 				<div id="email" class="selection"><p>Email mismatch</p></div>
 				<div id="lost" class="selection">
 					<p>Has lost/stolen in the past 7 days</p>
+				</div>
+				<div id="lost_cards" class="additional-input">
+					<h4>Lost/Stolen Card Number:</h4>
+					<div class="input-fields">
+						<input type="text" placeholder="Card Number" />
+						<button id="addNameBtn" class="addMore">Add More</button>
+					</div>
 				</div>
 				<div id="sa1" class="selection">
 					<p>
@@ -55,10 +62,27 @@
 						smaller deposit
 					</p>
 				</div>
+				<div id="sa1_cards" class="additional-input">
+					<h4>Card Numbers:</h4>
+					<div class="input-fields">
+						<input type="text" placeholder="Card used for withdrawal" />
+						<input type="text" placeholder="Card used for larger deposit" />
+						<button id="addNameBtn" class="addMore">Add More</button>
+					</div>
+				</div>
 				<div id="sa2" class="selection">
 					<p>
 						Suspicious Activity 2 - multiple debit cards in the past 24 hours
 					</p>
+				</div>
+				<div id="sa2_cards" class="additional-input">
+					<h4>Debit Cards Used:</h4>
+					<div class="input-fields">
+						<input type="text" placeholder="Card Number 1" />
+						<input type="text" placeholder="Card Number 2" />
+						<input type="text" placeholder="Card Number 3" />
+						<button id="addNameBtn" class="addMore">Add More</button>
+					</div>
 				</div>
 				<div id="cashed" class="selection">
 					<p>Cashed out before withdrawal</p>
@@ -68,6 +92,13 @@
 				</div>
 				<div id="user" class="selection">
 					<p>Has 4 or more related users</p>
+				</div>
+				<div id="user_number" class="additional-input">
+					<h4>Number of Related Users:</h4>
+					<div class="input-fields">
+						<input type="text" placeholder="4" />
+						<button id="addNameBtn" class="addMore">Add More</button>
+					</div>
 				</div>
 				<div id="outside" class="selection"><p>Geo-locating outside US</p></div>
 				<div id="newloc" class="selection">
