@@ -138,20 +138,28 @@ function GenerateText() {
 	if (isChecked(sa1)) {
 		//Get cards
 		if (first_escalation) {
-			result.push("withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)");
+			result.push(
+				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)"
+			);
 			first_escalation = false;
 		} else {
-			result.push("withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)");
+			result.push(
+				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)"
+			);
 		}
 	}
 
 	if (isChecked(sa2)) {
 		//Get cards
 		if (first_escalation) {
-			result.push("Customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)");
+			result.push(
+				"Customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)"
+			);
 			first_escalation = false;
 		} else {
-			result.push("customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)");
+			result.push(
+				"customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)"
+			);
 		}
 	}
 
@@ -224,11 +232,10 @@ function GenerateText() {
 	}
 
 	if (result.length > 1) {
-		result = result.slice(0, -1).join(', ') + ', and '+result.slice(-1)
+		result = result.slice(0, -1).join(", ") + ", and " + result.slice(-1);
 	}
-	
-	return 'Escalating case - ' + result + '.';
 
+	return "Escalating case - " + result + ".";
 }
 
 updateResult();
