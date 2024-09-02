@@ -151,6 +151,9 @@ input {
 	padding: 0.2rem;
 	border-radius: 0.3rem;
 	border: none;
+	background: rgb(247, 247, 247);
+	padding-inline: 0.3rem;
+	caret-color: black;
 }
 
 button.addMore {
