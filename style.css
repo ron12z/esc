@@ -1,5 +1,6 @@
 :root {
 	--input_button: 1.8rem;
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
 *,
@@ -20,7 +21,6 @@ body {
 	min-height: 100dvh;
 	display: flex;
 	flex-direction: column;
-	font-family: Cambria, serif;
 }
 
 header {
@@ -88,6 +88,11 @@ main {
 	align-items: center;
 	padding: 0.4rem;
 	caret-color: transparent;
+	border-bottom: none;
+}
+
+.selection:last-child {
+	border-bottom: 1px solid black;
 }
 
 button#reset {
@@ -99,11 +104,9 @@ button#reset {
 	display: inline-block;
 	cursor: pointer;
 	color: #120e12;
-	font-family: Arial;
 	font-size: 13px;
 	padding: 6px 24px;
 	text-decoration: none;
-	text-shadow: 0px 1px 0px #6b2304;
 }
 button#reset:hover {
 	/* background: linear-gradient(to bottom, #ff775c 5%, #fabfaf 100%); */
@@ -137,12 +140,15 @@ footer {
 }
 
 .additional-input {
+	background: rgb(132, 167, 132);
 	display: flex;
+	/* display: none; */
 	flex-direction: column;
 	align-items: start;
 	flex-grow: 1;
 	gap: 0.5rem;
 	cursor: default;
+	border-top: none;
 }
 
 .input-fields {
@@ -175,12 +181,9 @@ button.addMore {
 }
 button.addMore:hover {
 	background-color: #306115;
+	color: white;
 }
 button.addMore:active {
 	position: relative;
 	top: 3px;
-}
-
-.additional-input {
-	/* display: none; */
 }

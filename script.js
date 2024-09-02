@@ -25,6 +25,7 @@ const lost_cards = document.querySelector("#lost_cards");
 const sa1_cards = document.querySelector("#sa1_cards");
 const sa2_cards = document.querySelector("#sa2_cards");
 const user_number = document.querySelector("#user_number");
+const state_name = document.querySelector("#state_name");
 
 // Event listeners
 selectionDivs.forEach((div) => {
@@ -148,7 +149,7 @@ function GenerateText() {
 	}
 
 	if (isChecked(sa1)) {
-		//Get cards
+		sa1_cards.style.display = "flex";
 		if (first_escalation) {
 			result.push(
 				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)"
@@ -159,10 +160,12 @@ function GenerateText() {
 				"withdrawing to a payment method (insert payment method) used for a small deposit with larger deposits made with (insert payment method)"
 			);
 		}
+	} else {
+		sa1_cards.style.display = "none";
 	}
 
 	if (isChecked(sa2)) {
-		//Get cards
+		sa2_cards.style.display = "flex";
 		if (first_escalation) {
 			result.push(
 				"Customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)"
@@ -173,6 +176,8 @@ function GenerateText() {
 				"customer has attempted to deposit with multiple debit cards in the past 24 hours - (card1), (card2), (card3)"
 			);
 		}
+	} else {
+		sa2_cards.style.display = "none";
 	}
 
 	if (isChecked(cashed)) {
@@ -194,13 +199,15 @@ function GenerateText() {
 	}
 
 	if (isChecked(user)) {
-		//Get number of related users
+		user_number.style.display = "flex";
 		if (first_escalation) {
 			result.push("Account is sharing a device with (x) related users");
 			first_escalation = false;
 		} else {
 			result.push("account is sharing a device with (x) related users");
 		}
+	} else {
+		user_number.style.display = "none";
 	}
 
 	if (isChecked(outside)) {
@@ -222,12 +229,15 @@ function GenerateText() {
 	}
 
 	if (isChecked(state)) {
+		state_name.style.display = "flex";
 		if (first_escalation) {
 			result.push("(State) Account, no license");
 			first_escalation = false;
 		} else {
 			result.push("(State) Account, no license");
 		}
+	} else {
+		state_name.style.display = "none";
 	}
 
 	if (isChecked(initial)) {
