@@ -349,10 +349,10 @@ function GenerateText() {
 
 	if (isChecked(initial)) {
 		if (first_escalation) {
-			result.push("No intials deposit");
+			result.push("No intial deposit");
 			first_escalation = false;
 		} else {
-			result.push("no intials deposit");
+			result.push("no intial deposit");
 		}
 	}
 
