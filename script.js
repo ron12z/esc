@@ -71,11 +71,32 @@ resetBtn.addEventListener("click", () => {
 addMoreBtns.forEach((button) => {
 	button.addEventListener("click", () => {
 		const parent = button.parentNode;
+
+		// Create a container div for the input and button
+		const fieldContainer = document.createElement("div");
+		fieldContainer.classList.add("input-group"); // Add a class for styling if needed
+
 		const newField = document.createElement("input");
 		newField.type = "text";
 
-		parent.insertBefore(newField, button);
+		// Create the remove button
+		const removeButton = document.createElement("button");
+		removeButton.textContent = "❌"; // Or any suitable label
+		removeButton.classList.add("remove-button");
+
+		// Append input and button to the container
+		fieldContainer.appendChild(newField);
+		fieldContainer.appendChild(removeButton);
+
+		// Insert the container before the "Add More" button
+		parent.insertBefore(fieldContainer, button);
 		addInputFieldListeners();
+
+		// Add event listener to the remove button
+		removeButton.addEventListener("click", () => {
+			parent.removeChild(fieldContainer); // Remove the entire container
+			updateResult();
+		});
 	});
 });
 
@@ -408,14 +429,14 @@ function GenerateText() {
 	// Has multiple zip codes
 	if (isChecked(zip)) {
 		if (first_escalation) {
-			result.push("ZIP CODE FIRST");
+			result.push("Has 2 or more zip codes used within the past 24 hours");
 			first_escalation = false;
 		} else {
-			result.push("ZIP CODE CONT");
+			result.push("has 2 or more zip codes used within the past 24 hours");
 		}
 	}
 
-	// Default if there's no selection checked
+	// Default if there's no selection/escalation checked
 	if (!anyChecked) {
 		return "No Escalations - Good to approve";
 	}

@@ -113,7 +113,8 @@ button#reset:hover {
 	/* background: linear-gradient(to bottom, #ff775c 5%, #fabfaf 100%); */
 	background: #c4533d;
 }
-button#reset:active {
+button#reset:active,
+.option:active {
 	position: relative;
 	top: 3px;
 }
@@ -125,6 +126,31 @@ button#reset {
 	border: 1.5px solid grey;
 }
 
+button.remove-button {
+	cursor: pointer;
+	background: pink;
+	border: 1px solid grey;
+	border-radius: 3px;
+	position: relative;
+	right: 1.45rem;
+	margin-right: -1.3rem;
+	opacity: 0.8;
+}
+
+button.remove-button:hover {
+	background: rgb(207, 155, 162);
+}
+
+button.remove-button:active {
+	position: relative;
+	top: 1px;
+}
+.input-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0;
+}
 .checked {
 	background: rgb(184, 236, 184);
 }
