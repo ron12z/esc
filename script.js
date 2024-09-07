@@ -1,7 +1,7 @@
 // Variables
 const result = document.querySelector(".result");
 const escalation = document.querySelector("#escalation");
-const options = document.querySelector(".options");
+const options = document.querySelectorAll(".option");
 const amount = document.querySelector("#amount");
 const suspended = document.querySelector("#suspended");
 const name1 = document.querySelector("#name");
@@ -16,6 +16,7 @@ const outside = document.querySelector("#outside");
 const newloc = document.querySelector("#newloc");
 const state = document.querySelector("#state");
 const initial = document.querySelector("#initial");
+const zip = document.querySelector("#zip");
 
 const selectionDivs = document.querySelectorAll(".selection");
 const resetBtn = document.querySelector("#reset");
@@ -29,6 +30,8 @@ const state_name = document.querySelector("#state_name");
 const addMoreBtns = document.querySelectorAll("button.addMore");
 const sa1_card1 = document.querySelector("#sa1_card1");
 const sa1_card2 = document.querySelector("#sa1_card2");
+const account_closed = document.querySelector("#account_closed");
+const account_suspended = document.querySelector("#account_suspended");
 
 // Add initial input field listeners
 addInputFieldListeners();
@@ -118,6 +121,18 @@ function addInputFieldListeners() {
 	});
 }
 
+// Add event listeners to each "option" div
+options.forEach((option) => {
+	option.addEventListener("click", () => {
+		// Remove "checked" from all options
+		options.forEach((opt) => opt.classList.remove("checked"));
+
+		// Add "checked" to the clicked option
+		option.classList.add("checked");
+		updateResult();
+	});
+});
+
 // Checked if an element has "checked" class
 function isChecked(element) {
 	if (element.classList.contains("checked")) {
@@ -175,6 +190,7 @@ function getSA1inputs() {
 
 	return result;
 }
+
 // For updating DOM
 function updateResult() {
 	escalation.textContent = GenerateText();
@@ -182,6 +198,7 @@ function updateResult() {
 
 // Main function
 // Generating result text based on checked selections
+// Checks first escalation flag if first escalation
 function GenerateText() {
 	const anyChecked = Array.from(selectionDivs).some((div) =>
 		div.classList.contains("checked")
@@ -190,6 +207,7 @@ function GenerateText() {
 	let result = [];
 	let first_escalation = true;
 
+	// Withdrawal amount more than 5k
 	if (isChecked(amount)) {
 		if (first_escalation) {
 			result.push("WD greater than $5k");
@@ -199,15 +217,35 @@ function GenerateText() {
 		}
 	}
 
+	// Account is closed/suspended
 	if (isChecked(suspended)) {
+		suspended_options.style.display = "flex";
+		let account_status = "";
+
+		// Use switch case to handle multiple options
+		switch (true) {
+			case isChecked(account_closed):
+				account_status = "closed";
+				break;
+			case isChecked(account_suspended):
+				account_status = "suspended";
+				break;
+			// Add more cases here as needed for future options
+			default:
+				account_status = "unknown"; // Handle unexpected cases
+		}
+
 		if (first_escalation) {
-			result.push("Account is suspended/closed");
+			result.push(`Account is ${account_status}`);
 			first_escalation = false;
 		} else {
-			result.push("account is suspended/closed");
+			result.push(`account is ${account_status}`);
 		}
+	} else {
+		suspended_options.style.display = "none";
 	}
 
+	// Name mismatch
 	if (isChecked(name1)) {
 		name_names.style.display = "flex";
 		const input_fields_content = getInputFieldContents(name_names);
@@ -223,6 +261,7 @@ function GenerateText() {
 		name_names.style.display = "none";
 	}
 
+	// Email mismatch
 	if (isChecked(email)) {
 		if (first_escalation) {
 			result.push("account less than 1 month old with email name mismatch");
@@ -232,6 +271,7 @@ function GenerateText() {
 		}
 	}
 
+	// Failed deposit with lost/stolen cards
 	if (isChecked(lost)) {
 		lost_cards.style.display = "flex";
 		const input_fields_content = getInputFieldContents(lost_cards);
@@ -245,6 +285,7 @@ function GenerateText() {
 		lost_cards.style.display = "none";
 	}
 
+	// Suspicious Activity 1
 	if (isChecked(sa1)) {
 		sa1_cards.style.display = "flex";
 		const sa1_card_details = getSA1inputs();
@@ -263,6 +304,7 @@ function GenerateText() {
 		sa1_cards.style.display = "none";
 	}
 
+	// Suspicious Activity 2
 	if (isChecked(sa2)) {
 		sa2_cards.style.display = "flex";
 		const input_fields_content = getInputFieldContents(sa2_cards);
@@ -281,6 +323,7 @@ function GenerateText() {
 		sa2_cards.style.display = "none";
 	}
 
+	// Cashed out before latest withdrawal
 	if (isChecked(cashed)) {
 		if (first_escalation) {
 			result.push("Cashed out bet before the latest withdrawal");
@@ -290,6 +333,7 @@ function GenerateText() {
 		}
 	}
 
+	// Has short odd bets
 	if (isChecked(short)) {
 		if (first_escalation) {
 			result.push("Short odds bet placement");
@@ -299,6 +343,7 @@ function GenerateText() {
 		}
 	}
 
+	// Has 4 or more related users
 	if (isChecked(user)) {
 		user_number.style.display = "flex";
 		const input_fields_content = getInputFieldContents(user_number);
@@ -316,6 +361,7 @@ function GenerateText() {
 		user_number.style.display = "none";
 	}
 
+	// Geolocating outside US
 	if (isChecked(outside)) {
 		if (first_escalation) {
 			result.push("Account is Geo locating outside of the US");
@@ -325,6 +371,7 @@ function GenerateText() {
 		}
 	}
 
+	// In a new device on a new location
 	if (isChecked(newloc)) {
 		if (first_escalation) {
 			result.push("Account is on a new device in a new location");
@@ -334,6 +381,7 @@ function GenerateText() {
 		}
 	}
 
+	// Licensed state
 	if (isChecked(state)) {
 		state_name.style.display = "flex";
 		const input_fields_content = getInputFieldContents(state_name);
@@ -347,6 +395,7 @@ function GenerateText() {
 		state_name.style.display = "none";
 	}
 
+	// Has no initial deposit
 	if (isChecked(initial)) {
 		if (first_escalation) {
 			result.push("No intial deposit");
@@ -356,10 +405,22 @@ function GenerateText() {
 		}
 	}
 
+	// Has multiple zip codes
+	if (isChecked(zip)) {
+		if (first_escalation) {
+			result.push("ZIP CODE FIRST");
+			first_escalation = false;
+		} else {
+			result.push("ZIP CODE CONT");
+		}
+	}
+
+	// Default if there's no selection checked
 	if (!anyChecked) {
 		return "No Escalations - Good to approve";
 	}
 
+	// Formatting escalation display
 	if (result.length > 1) {
 		result = result.slice(0, -1).join(", ") + ", and " + result.slice(-1);
 	}
