@@ -17,13 +17,17 @@
 		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="manifest" href="/site.webmanifest" />
 		<title>Escalator</title>
 		<script src="script.js" defer></script>
 		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<header>
-			<h1>Escalator ⛔</h1>
+			<h1>⛔ Escalator</h1>
 		</header>
 
 		<main>
@@ -32,10 +36,25 @@
 				<p id="escalation"></p>
 			</div>
 			<div class="Selections">
-				<div id="amount" class="selection">Amount is more than $5,000</div>
+				<div id="amount" class="selection">
+					<p>Amount is more than $5,000</p>
+				</div>
 				<div id="suspended" class="selection">
 					<p>Account is suspended</p>
 				</div>
+
+				<div id="suspended_options" class="additional-input">
+					<h4>Account Status:</h4>
+					<div class="input-fields options">
+						<div id="account_closed" class="option checked">
+							<p>Closed</p>
+						</div>
+						<div id="account_suspended" class="option">
+							<p>Suspended</p>
+						</div>
+					</div>
+				</div>
+
 				<div id="name" class="selection"><p>Name mismatch</p></div>
 				<div id="name_names" class="additional-input">
 					<h4>Names in Account:</h4>
@@ -124,6 +143,9 @@
 				</div>
 				<div id="initial" class="selection">
 					<p>Account has no initial deposit and winnings NOT from free bet</p>
+				</div>
+				<div id="zip" class="selection">
+					<p>ZIP CODE</p>
 				</div>
 			</div>
 		</main>

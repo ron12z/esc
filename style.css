@@ -187,3 +187,31 @@ button.addMore:active {
 	position: relative;
 	top: 3px;
 }
+
+.options {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.option {
+	background: rgb(196, 196, 196);
+	border: 1px solid black;
+	padding: 0.3rem;
+	border-radius: 0.5rem;
+	font-size: 1rem;
+}
+
+.option.checked {
+	background: rgb(184, 236, 184);
+	font-weight: 600;
+}
+
+.option:hover,
+.selection:hover {
+	background: rgb(118, 204, 118);
+}
+
+.option:active,
+.selection:active {
+	background: green;
+}
