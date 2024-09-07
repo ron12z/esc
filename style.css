@@ -241,3 +241,38 @@ button.addMore:active {
 .selection:active {
 	background: green;
 }
+
+.donate-info {
+	display: none;
+	flex-direction: column;
+	position: absolute;
+	bottom: 2rem;
+	right: 1rem;
+	color: black;
+	font-size: large;
+	font-weight: 600;
+	gap: 0.5rem;
+	border: 1.5px solid black;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	background: lightblue;
+}
+
+img {
+	border-radius: 0.5rem;
+}
+
+#show-QR {
+	cursor: pointer;
+	color: rgb(172, 179, 255);
+}
+
+.noselect {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently
+									supported by Chrome, Edge, Opera and Firefox */
+}

@@ -33,6 +33,9 @@ const sa1_card2 = document.querySelector("#sa1_card2");
 const account_closed = document.querySelector("#account_closed");
 const account_suspended = document.querySelector("#account_suspended");
 
+const showQR = document.querySelector("#show-QR");
+const donateInfo = document.querySelector(".donate-info");
+
 // Add initial input field listeners
 addInputFieldListeners();
 
@@ -154,6 +157,21 @@ options.forEach((option) => {
 	});
 });
 
+// Toggle QR visibility
+showQR.addEventListener("click", () => {
+	if (donateInfo.style.display === "none") {
+		donateInfo.style.display = "flex";
+	} else {
+		donateInfo.style.display = "none";
+	}
+});
+
+// Hide QR when clicked
+donateInfo.addEventListener("click", () => {
+	donateInfo.style.display = "none";
+});
+
+// --------------------------------
 // Checked if an element has "checked" class
 function isChecked(element) {
 	if (element.classList.contains("checked")) {
