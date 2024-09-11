@@ -456,7 +456,7 @@ function GenerateText() {
 		}
 	}
 
-	if (isChecked(bacarat)) {
+	if (isChecked(baccarat)) {
 		if (first_escalation) {
 			result.push("Baccarat abuse");
 			first_escalation = false;
