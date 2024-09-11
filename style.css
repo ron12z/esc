@@ -24,6 +24,17 @@ body {
 }
 
 header {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+}
+
+footer {
+	position: sticky;
+	bottom: 0;
+}
+
+header {
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -17,6 +17,7 @@ const newloc = document.querySelector("#newloc");
 const state = document.querySelector("#state");
 const initial = document.querySelector("#initial");
 const zip = document.querySelector("#zip");
+const bacarat = document.querySelector("#bacarat");
 
 const selectionDivs = document.querySelectorAll(".selection");
 const resetBtn = document.querySelector("#reset");
@@ -53,17 +54,18 @@ selectionDivs.forEach((div) => {
 resetBtn.addEventListener("click", () => {
 	// Remove all input fields without placeholders, clear input fields with placeholders, then updateResult
 	const allInputFields = document.querySelectorAll("input");
+	const inputGroups = document.querySelectorAll(".input-group");
 	selectionDivs.forEach((div) => {
 		div.classList.remove("checked");
 	});
 
-	// Remove input field if no placeholder, else just clear it
+	// Remove input groups (created by "Add More")
 	allInputFields.forEach((field) => {
-		if (!field.placeholder) {
-			field.remove();
-		} else {
-			field.value = "";
-		}
+		field.value = "";
+	});
+
+	inputGroups.forEach((inputGroup) => {
+		inputGroup.remove();
 	});
 
 	// Update result after processing input fields
@@ -451,6 +453,15 @@ function GenerateText() {
 			first_escalation = false;
 		} else {
 			result.push("has 2 or more zip codes used within the past 24 hours");
+		}
+	}
+
+	if (isChecked(bacarat)) {
+		if (first_escalation) {
+			result.push("Baccarat abuse");
+			first_escalation = false;
+		} else {
+			result.push("baccarat abuse");
 		}
 	}
 

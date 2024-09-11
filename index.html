@@ -17,10 +17,7 @@
 		</script>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-		<link rel="manifest" href="/site.webmanifest" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 		<title>Escalator</title>
 		<script src="script.js" defer></script>
 		<link rel="stylesheet" href="style.css" />
@@ -55,7 +52,9 @@
 					</div>
 				</div>
 
-				<div id="name" class="selection"><p>Name mismatch</p></div>
+				<div id="name" class="selection">
+					<p>Name mismatch</p>
+				</div>
 				<div id="name_names" class="additional-input">
 					<h4>Names in Account:</h4>
 					<div class="input-fields">
@@ -64,7 +63,9 @@
 						<button class="addMore">Add More</button>
 					</div>
 				</div>
-				<div id="email" class="selection"><p>Email mismatch</p></div>
+				<div id="email" class="selection">
+					<p>Email mismatch</p>
+				</div>
 				<div id="lost" class="selection">
 					<p>Has lost/stolen in the past 7 days</p>
 				</div>
@@ -142,7 +143,16 @@
 					<p>Account has no initial deposit and winnings NOT from free bet</p>
 				</div>
 				<div id="zip" class="selection">
-					<p>Has 2 or more zip codes used within the past 24 hours</p>
+					<p>
+						Has 2 or more zip codes used within the past 24 hours (Applies only
+						to accounts with red flags)
+					</p>
+				</div>
+				<div id="bacarat" class="selection">
+					<p>
+						Baccarat Activity wherein Stake and Settlement are almost the same
+						amount AND depositing and withdrawing to different payment method
+					</p>
 				</div>
 			</div>
 		</main>
