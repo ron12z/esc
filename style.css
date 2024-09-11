@@ -254,7 +254,6 @@ button.addMore:active {
 }
 
 .donate-info {
-	display: none;
 	flex-direction: column;
 	position: absolute;
 	bottom: 2rem;

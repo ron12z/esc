@@ -95,6 +95,7 @@ addMoreBtns.forEach((button) => {
 
 		// Insert the container before the "Add More" button
 		parent.insertBefore(fieldContainer, button);
+		newField.focus();
 		addInputFieldListeners();
 
 		// Add event listener to the remove button
@@ -168,6 +169,9 @@ showQR.addEventListener("click", () => {
 		donateInfo.style.display = "none";
 	}
 });
+
+// Initialize first state (hidden)
+donateInfo.style.display = "none";
 
 // Hide QR when clicked
 donateInfo.addEventListener("click", () => {
