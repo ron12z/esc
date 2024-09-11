@@ -225,9 +225,7 @@ function getSA1inputs() {
 	const inputElements = sa1_cards.querySelectorAll("input");
 
 	inputElements.forEach((item) => {
-		if (item.value !== "") {
-			result.push(item.value);
-		}
+		result.push(item.value);
 	});
 
 	return result;
