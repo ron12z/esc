@@ -169,6 +169,9 @@ showQR.addEventListener("click", () => {
 	}
 });
 
+// Initialize first state (hidden)
+donateInfo.style.display = "none";
+
 // Hide QR when clicked
 donateInfo.addEventListener("click", () => {
 	donateInfo.style.display = "none";
