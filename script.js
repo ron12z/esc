@@ -123,6 +123,7 @@ escalation.addEventListener("click", () => {
 			popup.style.backgroundColor = "green";
 			popup.style.color = "white";
 			popup.style.borderRadius = "5px";
+			popup.style.zIndex = "2";
 			document.body.appendChild(popup);
 
 			// Hide the popup after a short delay
