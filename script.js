@@ -17,7 +17,7 @@ const newloc = document.querySelector("#newloc");
 const state = document.querySelector("#state");
 const initial = document.querySelector("#initial");
 const zip = document.querySelector("#zip");
-const bacarat = document.querySelector("#bacarat");
+const baccarat = document.querySelector("#baccarat");
 
 const selectionDivs = document.querySelectorAll(".selection");
 const resetBtn = document.querySelector("#reset");
