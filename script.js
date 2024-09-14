@@ -107,14 +107,12 @@ addMoreBtns.forEach((button) => {
 });
 
 // For copying escalation
-escalation.addEventListener("click", () => {
+function handleEscalationClick() {
 	const textToCopy = escalation.textContent;
 
-	// Copy the text to the clipboard
 	navigator.clipboard
 		.writeText(textToCopy)
 		.then(() => {
-			// Display a "Copied to clipboard" popup
 			const popup = document.createElement("div");
 			popup.textContent = "Copied to clipboard!";
 			popup.style.position = "fixed";
@@ -127,16 +125,14 @@ escalation.addEventListener("click", () => {
 			popup.style.zIndex = "2";
 			document.body.appendChild(popup);
 
-			// Hide the popup after a short delay
 			setTimeout(() => {
 				popup.remove();
-			}, 2000); // 2000 milliseconds (2 seconds)
+			}, 2000);
 		})
 		.catch((err) => {
 			console.error("Could not copy text: ", err);
-			// You might want to display an error message to the user here
 		});
-});
+}
 
 // Helper functions
 // Add Input Field Listeners to all current input fields in DOM
@@ -470,7 +466,10 @@ function GenerateText() {
 
 	// Default if there's no selection/escalation checked
 	if (!anyChecked) {
+		escalation.removeEventListener("click", handleEscalationClick);
 		return "No Escalations - Good to approve";
+	} else {
+		escalation.addEventListener("click", handleEscalationClick);
 	}
 
 	// Formatting escalation display
