@@ -43,6 +43,14 @@ header {
 	background: rgb(179, 199, 223);
 }
 
+.updates {
+	position: absolute;
+	right: 1.5rem;
+	font-size: large;
+	text-decoration: none;
+	color: inherit;
+}
+
 main {
 	background: rgb(235, 251, 255);
 	flex-grow: 1;
