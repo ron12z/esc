@@ -114,20 +114,13 @@ function handleEscalationClick() {
 		.writeText(textToCopy)
 		.then(() => {
 			const popup = document.createElement("div");
+			popup.classList.add("popup");
 			popup.textContent = "Copied to clipboard!";
-			popup.style.position = "fixed";
-			popup.style.top = "20px";
-			popup.style.right = "20px";
-			popup.style.padding = "10px";
-			popup.style.backgroundColor = "green";
-			popup.style.color = "white";
-			popup.style.borderRadius = "5px";
-			popup.style.zIndex = "2";
 			document.body.appendChild(popup);
 
 			setTimeout(() => {
 				popup.remove();
-			}, 2000);
+			}, 750);
 		})
 		.catch((err) => {
 			console.error("Could not copy text: ", err);
