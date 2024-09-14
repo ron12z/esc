@@ -124,8 +124,10 @@ button#reset:hover {
 	/* background: linear-gradient(to bottom, #ff775c 5%, #fabfaf 100%); */
 	background: #c4533d;
 }
+
 button#reset:active,
-.option:active {
+.option:active,
+button.addMore:active {
 	position: relative;
 	top: 3px;
 }
@@ -220,10 +222,6 @@ button.addMore {
 button.addMore:hover {
 	background-color: #306115;
 	color: white;
-}
-button.addMore:active {
-	position: relative;
-	top: 3px;
 }
 
 .options {
