@@ -41,6 +41,7 @@ header {
 	padding: 1rem;
 	color: rgb(27, 20, 20);
 	background: rgb(179, 199, 223);
+	transition: 0.25s;
 }
 
 .updates {
