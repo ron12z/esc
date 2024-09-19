@@ -36,6 +36,7 @@ const account_suspended = document.querySelector("#account_suspended");
 
 const showQR = document.querySelector("#show-QR");
 const donateInfo = document.querySelector(".donate-info");
+const header = document.querySelector("header");
 
 // Add initial input field listeners
 addInputFieldListeners();
@@ -159,6 +160,10 @@ showQR.addEventListener("click", () => {
 	}
 });
 
+document.addEventListener("click", () => {
+	updateResult();
+});
+
 // Initialize first state (hidden)
 donateInfo.style.display = "none";
 
@@ -188,7 +193,7 @@ function getInputFieldContents(target_element) {
 	// Add each result to result list
 	inputElements.forEach((item) => {
 		if (item.value !== "") {
-			result.push(item.value);
+			result.push(item.value.trim());
 		}
 	});
 
@@ -460,9 +465,13 @@ function GenerateText() {
 	// Default if there's no selection/escalation checked
 	if (!anyChecked) {
 		escalation.removeEventListener("click", handleEscalationClick);
+		header.style.background = "rgb(179, 199, 223)";
+		header.style.color = "inherit";
 		return "No Escalations - Good to approve";
 	} else {
 		escalation.addEventListener("click", handleEscalationClick);
+		header.style.background = "rgb(255, 86, 57)";
+		header.style.color = "white";
 	}
 
 	// Formatting escalation display

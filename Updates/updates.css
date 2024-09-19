@@ -1,3 +1,9 @@
+main {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
 .update-group {
 	border: 1px solid black;
 	background: rgb(168, 168, 168);
@@ -21,4 +27,8 @@
 }
 .changes {
 	padding-left: 1rem;
+}
+
+.date::after {
+	content: ":";
 }
