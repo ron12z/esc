@@ -32,3 +32,7 @@ main {
 .date::after {
 	content: ":";
 }
+
+a {
+	color: rgb(0, 35, 148);
+}
