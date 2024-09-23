@@ -16,9 +16,9 @@ main {
 	border-radius: 1rem;
 }
 
-.changes::before {
+/* .changes::before {
 	content: "- ";
-}
+} */
 
 .changes-wrapper {
 	display: flex;
