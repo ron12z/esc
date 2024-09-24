@@ -4,7 +4,7 @@ main {
 	gap: 0.5rem;
 }
 
-.update-group {
+.text-group {
 	border: 1px solid black;
 	background: rgb(168, 168, 168);
 	display: flex;
@@ -20,16 +20,17 @@ main {
 	content: "- ";
 } */
 
-.changes-wrapper {
+.text-wrapper {
 	display: flex;
 	flex-direction: column;
 	gap: 0.1rem;
 }
-.changes {
+
+.text {
 	padding-left: 1rem;
 }
 
-.date::after {
+.desc::after {
 	content: ":";
 }
 
@@ -38,5 +39,5 @@ a {
 }
 
 strong {
-    color: #f7ff86;
+	color: #f7ff86;
 }
