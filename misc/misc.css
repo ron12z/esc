@@ -16,7 +16,7 @@ main {
 	border-radius: 1rem;
 }
 
-/* .changes::before {
+/* .text::before {
 	content: "- ";
 } */
 
@@ -28,6 +28,11 @@ main {
 
 .text {
 	padding-left: 1rem;
+}
+
+.text::after {
+	content: ' -Click to copy.';
+	color: #ffffffb8;
 }
 
 .desc::after {
