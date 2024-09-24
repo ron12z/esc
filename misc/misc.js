@@ -33,7 +33,7 @@ function getCurrentTime() {
 
 function updateCleared() {
   currentTime = getCurrentTime();
-  cleared.textContent = `FBG Withdrawals Handled by MNL Team <b>CLEARED</b> - Updated as of ${currentTime}`;
+  cleared.innerHTML = `FBG Withdrawals Handled by MNL Team <b>CLEARED</b> - Updated as of ${currentTime}`;
   console.log("Updated time");
 }
 
