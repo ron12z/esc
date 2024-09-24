@@ -34,9 +34,37 @@ function getCurrentTime() {
 function updateCleared() {
   currentTime = getCurrentTime();
   cleared.innerHTML = `FBG Withdrawals Handled by MNL Team <b>CLEARED</b> - Updated as of ${currentTime}`;
-  console.log("Updated time");
 }
 
 updateCleared();
-
 setInterval(updateCleared, 1000);
+
+// Event Listeners
+const textGroups = document.querySelectorAll(".text-group");
+
+function copyTextContent(event) {
+  // Find the <p class="text"> element within the clicked text-group
+  const textElement = event.currentTarget.querySelector("p.text");
+
+  if (textElement) {
+    const textToCopy = textElement.textContent;
+
+    navigator.clipboard
+      .writeText(textToCopy)
+      .then(() => {
+        console.log("Text copied to clipboard!");
+        // Optionally, provide visual feedback to the user
+      })
+      .catch((err) => {
+        console.error("Failed to copy text: ", err);
+        // Handle errors gracefully
+      });
+  } else {
+    console.error("No text element found within the clicked group.");
+    // Optionally, inform the user that there's no text to copy
+  }
+}
+
+textGroups.forEach((group) => {
+  group.addEventListener("click", copyTextContent);
+});
