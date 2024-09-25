@@ -41,7 +41,7 @@
 					<p>Account is suspended/closed</p>
 				</div>
 
-				<div id="suspended_options" class="additional-input">
+				<div id="suspended-options" class="additional-input">
 					<h4>Account Status:</h4>
 					<div class="input-fields options">
 						<div id="account_suspended" class="option checked">
@@ -156,6 +156,36 @@
 						receiving and deposit and withdrawal are two different payment
 						method
 					</p>
+				</div>
+
+				<div id="no-permission" class="selection">
+					<p>No permission to Open in NATS</p>
+				</div>
+				<div id="no-permission-choices" class="additional-input">
+					<h4>Client States Info:</h4>
+					<div class="input-fields">
+						<input id="client-state" type="text" placeholder="Client State" />
+						<input
+							id="withdrawal-state"
+							type="text"
+							placeholder="Withdrawing to: (PA/WV)"
+						/>
+					</div>
+				</div>
+
+				<div id="nj" class="selection">
+					<p>NJ Client is withdrawing on a Licensed state such as PA/WV</p>
+				</div>
+				<div id="nj-options" class="additional-input">
+					<h4>Client Withdrawal State:</h4>
+					<div class="input-fields options">
+						<div id="PA" class="nj-option checked">
+							<p>PA</p>
+						</div>
+						<div id="WV" class="nj-option">
+							<p>WV</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>

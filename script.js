@@ -18,10 +18,16 @@ const state = document.querySelector("#state");
 const initial = document.querySelector("#initial");
 const zip = document.querySelector("#zip");
 const baccarat = document.querySelector("#baccarat");
+const noPermission = document.querySelector("#no-permission");
+const noPermissionChoices = document.querySelector("#no-permission-choices");
+const nj = document.querySelector("#nj");
+const nj_options = document.querySelector("#nj-options");
+const nj_options_choices = document.querySelectorAll(".nj-option");
 
 const selectionDivs = document.querySelectorAll(".selection");
 const resetBtn = document.querySelector("#reset");
 
+const suspended_options = document.querySelector("#suspended-options");
 const name_names = document.querySelector("#name_names");
 const lost_cards = document.querySelector("#lost_cards");
 const sa1_cards = document.querySelector("#sa1_cards");
@@ -129,6 +135,7 @@ function handleEscalationClick() {
 }
 
 // Helper functions
+
 // Add Input Field Listeners to all current input fields in DOM
 function addInputFieldListeners() {
 	const inputFields = document.querySelectorAll("input");
@@ -144,6 +151,18 @@ options.forEach((option) => {
 	option.addEventListener("click", () => {
 		// Remove "checked" from all options
 		options.forEach((opt) => opt.classList.remove("checked"));
+
+		// Add "checked" to the clicked option
+		option.classList.add("checked");
+		updateResult();
+	});
+});
+
+// Add event listeners to each "nj-option" div
+nj_options_choices.forEach((option) => {
+	option.addEventListener("click", () => {
+		// Remove "checked" from all nj_options_choices
+		nj_options_choices.forEach((opt) => opt.classList.remove("checked"));
 
 		// Add "checked" to the clicked option
 		option.classList.add("checked");
@@ -234,6 +253,22 @@ function updateResult() {
 	escalation.textContent = GenerateText();
 }
 
+function getNamesCount() {
+	const placeholder = 2;
+	const namesGroup = document.querySelector("#name_names");
+	const inputFields = namesGroup.querySelectorAll("input");
+
+	let count = 0;
+
+	inputFields.forEach((inputField) => {
+		if (inputField.value.trim() !== "") {
+			count++;
+		}
+	});
+
+	return placeholder >= count ? placeholder : count;
+}
+
 // Main function
 // Generating result text based on checked selections
 // Checks first escalation flag if first escalation
@@ -287,13 +322,18 @@ function GenerateText() {
 	if (isChecked(name1)) {
 		name_names.style.display = "flex";
 		const input_fields_content = getInputFieldContents(name_names);
+		const namesCount = getNamesCount();
 
 		//Get names
 		if (first_escalation) {
-			result.push(`2 different names on account: ${input_fields_content}`);
+			result.push(
+				`${namesCount} different names on account: ${input_fields_content}`
+			);
 			first_escalation = false;
 		} else {
-			result.push(`has 2 different names on account: ${input_fields_content}`);
+			result.push(
+				`has ${namesCount} different names on account: ${input_fields_content}`
+			);
 		}
 	} else {
 		name_names.style.display = "none";
@@ -460,6 +500,58 @@ function GenerateText() {
 		} else {
 			result.push("baccarat abuse");
 		}
+	}
+
+	// No permission to open in nats
+	if (isChecked(noPermission)) {
+		noPermissionChoices.style.display = "flex";
+		const clientState = document.querySelector("#client-state").value.trim();
+		const withdrawalState = document
+			.querySelector("#withdrawal-state")
+			.value.trim();
+
+		if (first_escalation) {
+			result.push(
+				`${clientState} client withdrawing to ${withdrawalState}, no permission to open in NATS`
+			);
+			first_escalation = false;
+		} else {
+			result.push(
+				`${clientState} client withdrawing to ${withdrawalState}, no permission to open in NATS`
+			);
+		}
+	} else {
+		noPermissionChoices.style.display = "none";
+	}
+
+	// NJ Client withdrawing to licensed state
+	if (isChecked(nj)) {
+		let withdrawalState = "";
+		const PA = document.querySelector("#PA");
+		const WV = document.querySelector("#WV");
+
+		// Use switch case to handle multiple options
+		switch (true) {
+			case isChecked(PA):
+				withdrawalState = "PA";
+				break;
+			case isChecked(WV):
+				withdrawalState = "WV";
+				break;
+			// Add more cases here as needed for future options
+			default:
+				withdrawalState = "unknown"; // Handle unexpected cases
+		}
+
+		nj_options.style.display = "flex";
+		if (first_escalation) {
+			result.push(`NJ Client withdrawing in ${withdrawalState} - No License`);
+			first_escalation = false;
+		} else {
+			result.push(`NJ Client withdrawing in ${withdrawalState} - No License`);
+		}
+	} else {
+		nj_options.style.display = "none";
 	}
 
 	// Default if there's no selection/escalation checked

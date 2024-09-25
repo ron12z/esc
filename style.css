@@ -96,11 +96,15 @@ main {
 .Selections {
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
+	border: 1px solid black;
+	border-top: none;
+	border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .selection,
 .additional-input {
-	border: 1px solid black;
+	border-top: 1px solid black;
 	background: rgba(161, 161, 161, 0.623);
 	min-height: 3rem;
 	height: auto;
@@ -109,11 +113,6 @@ main {
 	padding: 0.4rem;
 	caret-color: transparent;
 	border-bottom: none;
-}
-
-.selection:last-child {
-	border-bottom: 1px solid black;
-	border-radius: 0 0 0.5rem 0.5rem;
 }
 
 button#reset {
@@ -136,7 +135,8 @@ button#reset:hover {
 
 button#reset:active,
 .option:active,
-button.addMore:active {
+button.addMore:active,
+.nj-option:active {
 	position: relative;
 	top: 3px;
 }
@@ -172,9 +172,6 @@ button.remove-button:active {
 	justify-content: center;
 	align-items: center;
 	gap: 0;
-}
-.checked {
-	background: rgb(184, 236, 184);
 }
 
 footer {
@@ -238,25 +235,35 @@ button.addMore:hover {
 	gap: 0.5rem;
 }
 
-.option {
+.option,
+.nj-option {
 	background: rgb(196, 196, 196);
 	border: 1px solid black;
 	padding: 0.4rem 0.5rem;
 	border-radius: 0.5rem;
 	font-size: 1rem;
+	min-width: 4rem;
+	text-align: center;
 }
 
-.option.checked {
+.option,
+.nj-option {
+	cursor: pointer;
+}
+
+.checked {
 	background: rgb(184, 236, 184);
 }
 
 .option:hover,
-.selection:hover {
+.selection:hover,
+.nj-option:hover {
 	background: rgb(118, 204, 118);
 }
 
 .option:active,
-.selection:active {
+.selection:active,
+.nj-option:active {
 	background: green;
 }
 
