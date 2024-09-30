@@ -47,7 +47,7 @@ function copyTextContent(event) {
 	const textElement = event.currentTarget.querySelector("p.text");
 
 	if (textElement) {
-		const textToCopy = textElement.textContent;
+		const textToCopy = textElement.textContent.trim();
 
 		navigator.clipboard
 			.writeText(textToCopy)
