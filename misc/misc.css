@@ -31,6 +31,18 @@ main {
 
 .text {
 	padding-left: 1rem;
+	/* background: lightblue; */
+}
+
+#result {
+	min-height: 6rem;
+	background: rgb(166 239 255 / 30%);
+	border-radius: 0.5rem;
+	padding: 1rem;
+}
+
+#result::after {
+	color: rgb(114, 98, 255);
 }
 
 .text::after {
@@ -61,4 +73,59 @@ strong {
 	z-index: 1000;
 	transition: opacity 0.3s;
 	opacity: 1;
+}
+
+.choices-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 0;
+}
+
+.choices {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	border-radius: 0.3rem;
+	overflow: hidden;
+}
+
+.choice {
+	padding: 0.2rem;
+	border-top: 1px solid black;
+}
+
+.choice:first-child {
+	border-top: none;
+}
+
+.choice:hover {
+	background: rgb(118, 204, 118);
+}
+
+.choice:active {
+	background: green;
+}
+
+#miscReset {
+	box-shadow: inset 0px 1px 0px 0px #ffffff;
+	/* background: linear-gradient(to bottom, #fabfaf 5%, #ff775c 100%); */
+	background: #ff9d8a;
+	border-radius: 3px;
+	border: 1px solid #f55e3f;
+	display: inline-block;
+	cursor: pointer;
+	color: #120e12;
+	font-size: 13px;
+	padding: 0.7rem;
+	text-decoration: none;
+}
+
+#miscReset:active {
+	position: relative;
+	top: 3px;
+}
+
+#miscReset:hover {
+	background: #c4533d;
 }

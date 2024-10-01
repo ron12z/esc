@@ -1,6 +1,7 @@
 const showQR = document.querySelector("#show-QR");
 const donateInfo = document.querySelector(".donate-info");
 const cleared = document.querySelector("#cleared");
+
 // Toggle QR visibility
 showQR.addEventListener("click", () => {
 	if (donateInfo.style.display === "none") {
@@ -70,10 +71,34 @@ function copyTextContent(event) {
 function copyFormattedContent(event) {
 	// Find the <p class="text"> element within the clicked text-group
 	const textElement = event.currentTarget.querySelector("p.text");
+	const result = document.querySelector("#result");
 
 	if (textElement) {
 		// Get the inner HTML, which includes formatting
 		const htmlToCopy = textElement.innerHTML;
+
+		// Create a temporary element to hold the HTML
+		const tempElement = document.createElement("div");
+		tempElement.innerHTML = htmlToCopy;
+
+		// Append the temporary element to the body
+		document.body.appendChild(tempElement);
+
+		// Select the content of the temporary element
+		const selection = window.getSelection();
+		const range = document.createRange();
+		range.selectNodeContents(tempElement);
+		selection.removeAllRanges();
+		selection.addRange(range);
+
+		// Copy the selected content to the clipboard
+		document.execCommand("copy");
+
+		// Clean up: remove the temporary element and clear the selection
+		document.body.removeChild(tempElement);
+		selection.removeAllRanges();
+	} else if (event.currentTarget == result) {
+		const htmlToCopy = result.innerHTML;
 
 		// Create a temporary element to hold the HTML
 		const tempElement = document.createElement("div");
@@ -102,7 +127,13 @@ function copyFormattedContent(event) {
 }
 
 function showCopiedToClipboard(event) {
-	const targetDiv = event.currentTarget;
+	let targetDiv = "";
+
+	if (event.currentTarget == result) {
+		targetDiv = indivs;
+	} else {
+		targetDiv = event.currentTarget;
+	}
 
 	// Create the pop-up element
 	const popup = document.createElement("div");
@@ -125,3 +156,95 @@ textGroups.forEach((group) => {
 	group.addEventListener("click", copyFormattedContent);
 	group.addEventListener("click", showCopiedToClipboard);
 });
+
+// Update
+// For "Individual FBG Queues for posting"
+const indivs = document.querySelector("#indivs");
+const result = document.querySelector("#result");
+const choices = document.querySelectorAll(".choice");
+const VIPMI = document.querySelector("#VIPMI");
+const VIPNL = document.querySelector("#VIPNL");
+const Cash = document.querySelector("#Cash");
+const IN = document.querySelector("#IN");
+const MI = document.querySelector("#MI");
+const NL = document.querySelector("#NL");
+
+// Remove eventListener for this specific group
+indivs.removeEventListener("click", copyFormattedContent);
+indivs.removeEventListener("click", showCopiedToClipboard);
+// And add it only to result div
+result.addEventListener("click", copyFormattedContent);
+result.addEventListener("click", showCopiedToClipboard);
+
+// Add Event Listener for each choice
+choices.forEach((choice) => {
+	choice.addEventListener("click", toggleCheck);
+});
+
+const resetBtn = document.querySelector("#miscReset");
+resetBtn.addEventListener("click", resetMiscChoices);
+
+function toggleCheck(event) {
+	const target = event.target;
+	target.classList.toggle("checked");
+}
+
+function resetMiscChoices() {
+	choices.forEach((choice) => {
+		choice.classList.remove("checked");
+	});
+}
+
+function isChecked(element) {
+	if (element.classList.contains("checked")) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function GenerateText() {
+	const anyChecked = Array.from(choices).some((div) =>
+		div.classList.contains("checked")
+	);
+
+	let output = "";
+	const currentTime = getCurrentTime();
+	const cleared = ` <b>CLEARED</b> as of ${currentTime}<br>`;
+
+	if (isChecked(VIPMI)) {
+		output += `Vip Withdrawal - Michigan${cleared}`;
+	}
+
+	if (isChecked(VIPNL)) {
+		output += `Vip Withdrawal - Non Licensed States${cleared}`;
+	}
+
+	if (isChecked(Cash)) {
+		output += `Withdrawal - Cash At Cage${cleared}`;
+	}
+
+	if (isChecked(IN)) {
+		output += `Withdrawals - Indiana${cleared}`;
+	}
+
+	if (isChecked(MI)) {
+		output += `Withdrawals - Michigan${cleared}`;
+	}
+
+	if (isChecked(NL)) {
+		output += `Withdrawals - Non-Licensed States${cleared}`;
+	}
+
+	if (!anyChecked) {
+		output = "Please select cleared queues below:<br>";
+	}
+	return output;
+}
+
+document.addEventListener("click", updateResult);
+function updateResult() {
+	result.innerHTML = GenerateText();
+}
+updateResult();
+setInterval(updateResult, 1000);
