@@ -35,7 +35,7 @@ main {
 
 .text::after {
 	content: " -Click to copy.";
-	color: #ffffffb8;
+	color: rgb(211, 211, 211);
 }
 
 .desc::after {
@@ -47,7 +47,7 @@ a {
 }
 
 strong {
-	color: #f7ff86;
+	color: #960707;
 }
 
 .popup-misc {
