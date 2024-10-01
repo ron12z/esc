@@ -14,6 +14,9 @@ main {
 	width: 95%;
 	font-size: large;
 	border-radius: 1rem;
+	position: relative;
+	user-select: none;
+	cursor: pointer;
 }
 
 /* .text::before {
@@ -31,7 +34,7 @@ main {
 }
 
 .text::after {
-	content: ' -Click to copy.';
+	content: " -Click to copy.";
 	color: #ffffffb8;
 }
 
@@ -44,5 +47,18 @@ a {
 }
 
 strong {
-	/* color: #f7ff86; */
+	color: #f7ff86;
+}
+
+.popup-misc {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background: rgba(87, 66, 179, 0.7);
+	color: white;
+	padding: 5px 10px;
+	border-radius: 5px;
+	z-index: 1000;
+	transition: opacity 0.3s;
+	opacity: 1;
 }

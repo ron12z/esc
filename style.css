@@ -63,6 +63,7 @@ main {
 }
 
 .result {
+	position: relative;
 	background: rgb(163, 169, 199);
 	display: flex;
 	gap: 1rem;
@@ -292,14 +293,17 @@ img {
 }
 
 .popup {
-	position: fixed;
-	top: 20px;
-	right: 20px;
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: max-content;
 	padding: 10px;
 	background-color: rgb(68, 22, 143);
 	color: white;
 	border-radius: 5px;
-	z-index: 2;
+	z-index: 0;
+	opacity: 1;
+	transition: opacity 0.3s;
 }
 .noselect {
 	-webkit-touch-callout: none; /* iOS Safari */

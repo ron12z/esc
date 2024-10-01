@@ -123,11 +123,14 @@ function handleEscalationClick() {
 			const popup = document.createElement("div");
 			popup.classList.add("popup");
 			popup.textContent = "Copied to clipboard!";
-			document.body.appendChild(popup);
+			result.appendChild(popup);
 
 			setTimeout(() => {
-				popup.remove();
-			}, 750);
+				popup.style.opacity = "0";
+				setTimeout(() => {
+					result.removeChild(popup);
+				}, 300); // Match the duration of the transition
+			}, 500); // Display duration;
 		})
 		.catch((err) => {
 			console.error("Could not copy text: ", err);
@@ -559,11 +562,13 @@ function GenerateText() {
 		escalation.removeEventListener("click", handleEscalationClick);
 		header.style.background = "rgb(179, 199, 223)";
 		header.style.color = "inherit";
-		return "No Escalations - Good to approve";
+		escalation.style.cursor = "not-allowed";
+		return "Reviewed for Withdrawal - No Fraud Concerns";
 	} else {
 		escalation.addEventListener("click", handleEscalationClick);
 		header.style.background = "rgb(255, 86, 57)";
 		header.style.color = "white";
+		escalation.style.cursor = "pointer";
 	}
 
 	// Formatting escalation display

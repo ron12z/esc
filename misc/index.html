@@ -1,75 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-WHT3PWRP1L"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-WHT3PWRP1L"
+		></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
 
-      gtag("config", "G-WHT3PWRP1L");
-    </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Misc</title>
-    <script src="misc.js" defer></script>
-    <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="misc.css" />
-    <link rel="shortcut icon" href="../fbg.ico" type="image/x-icon" />
-  </head>
+			gtag("config", "G-WHT3PWRP1L");
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Misc</title>
+		<script src="misc.js" defer></script>
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="misc.css" />
+		<link rel="shortcut icon" href="../fbg.ico" type="image/x-icon" />
+	</head>
 
-  <body>
-    <header>
-      <h1>Other Useful Snippets</h1>
-    </header>
+	<body>
+		<header>
+			<h1>Other Useful Snippets</h1>
+		</header>
 
-    <main>
-      <div class="text-group">
-        <h4 class="desc">
-          Withdrawal Cancellation Workflot but
-          <strong>NOT FOR CANCELLATION</strong>
-        </h4>
-        <div class="text-wrapper">
-          <p class="text">
-            Sorry, this workflow should be used exclusively for <b>withdrawal cancellation requests</b>. If you need to inquire or ask approval regarding this transaction, I suggest that you post it outside of the workflow so our senior agents can handle it accordingly. Thank you!
-          </p>
-        </div>
-      </div>
+		<main>
+			<div class="text-group">
+				<h4 class="desc">
+					Withdrawal Cancellation Workflow but
+					<b>NOT FOR CANCELLATION</b>
+				</h4>
+				<div class="text-wrapper">
+					<p class="text">
+						Sorry, this workflow should be used exclusively for
+						<b>withdrawal cancellation requests</b>. If you need to inquire or
+						ask approval regarding this transaction, I suggest that you post it
+						in the channel without using the workflow so our senior agents can
+						handle it accordingly. Thank you!
+					</p>
+				</div>
+			</div>
 
-      <div class="text-group">
-        <h4 class="desc">FBG Queues <strong>CLEARED</strong></h4>
-        <div class="text-wrapper">
-          <p class="text" id="cleared"></p>
-        </div>
-      </div>
-    </main>
+			<div class="text-group">
+				<h4 class="desc">
+					WD Cancellation (except PA, NJ, WV): WITHDRAWAL_SUBMITTED and Payment
+					method is Trustly:
+				</h4>
+				<div class="text-wrapper">
+					<p class="text">
+						Sorry, we are not allowed to cancel this transaction because it's
+						already in <b>WITHDRAWAL_SUBMITTED</b> status. You can advise the
+						client that they can cancel it on their end. Thank you!
+					</p>
+				</div>
+			</div>
 
-    <footer>
-      <p>Created by @aarontalua</p>
-      <p>
-        I made this just for me, but feel free to use it if you like. 🙂
-      </p>
-      <p>
-        Want to donate? -> <span id="show-QR" class="noselect">Gcash QR</span>
-      </p>
+			<div class="text-group">
+				<h4 class="desc">FBG Queues <b>CLEARED</b></h4>
+				<div class="text-wrapper">
+					<p class="text" id="cleared"></p>
+				</div>
+			</div>
+		</main>
 
-      <div class="donate-info">
-        <img
-          id="GcashQR"
-          src="../GCashQR.png"
-          alt="Placeholder Image"
-          width="300"
-          height="300"
-        />
-        <p>I really appreciate it.</p>
-        <p>Thank you so much! 💖</p>
-      </div>
-    </footer>
-  </body>
+		<footer>
+			<p>Created by @aarontalua</p>
+			<p>I made this just for me, but feel free to use it if you like. 🙂</p>
+			<p>
+				Want to donate? -> <span id="show-QR" class="noselect">Gcash QR</span>
+			</p>
+
+			<div class="donate-info">
+				<img
+					id="GcashQR"
+					src="../GCashQR.png"
+					alt="Placeholder Image"
+					width="300"
+					height="300"
+				/>
+				<p>I really appreciate it.</p>
+				<p>Thank you so much! 💖</p>
+			</div>
+		</footer>
+	</body>
 </html>
