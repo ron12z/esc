@@ -210,11 +210,11 @@ function GenerateText() {
 
 	let output = "";
 	const currentTime = getCurrentTime();
-	const cleared = ` <b>CLEARED</b> as of ${currentTime}<br>`;
+	const cleared = ` <b>CLEARED</b> - Updated as of ${currentTime}<br>`;
 
-	if (isChecked(VIPMI)) {
-		output += `Vip Withdrawal - Michigan${cleared}`;
-	}
+	// if (isChecked(VIPMI)) {
+	// 	output += `Vip Withdrawal - Michigan${cleared}`;
+	// }
 
 	if (isChecked(VIPNL)) {
 		output += `Vip Withdrawal - Non Licensed States${cleared}`;
@@ -228,9 +228,9 @@ function GenerateText() {
 		output += `Withdrawals - Indiana${cleared}`;
 	}
 
-	if (isChecked(MI)) {
-		output += `Withdrawals - Michigan${cleared}`;
-	}
+	// if (isChecked(MI)) {
+	// 	output += `Withdrawals - Michigan${cleared}`;
+	// }
 
 	if (isChecked(NL)) {
 		output += `Withdrawals - Non-Licensed States${cleared}`;
