@@ -595,20 +595,20 @@ function GenerateText() {
 	if (isChecked(usersInitial2)) {
 		usersInitialDetails2.style.display = "flex";
 		const accountStatuses = getInputFieldContents(usersInitialDetails2);
-		// const relatedUsers = document
-		// 	.querySelector("#initial-related2")
-		// 	.value.trim();
+		const relatedUsers = document
+			.querySelector("#initial-related2")
+			.value.trim();
 
 		if (first_escalation) {
 			result.push(
-				// `Has ${relatedUsers} related users - New device links to ${accountStatuses}`
-				`Device sharing with new account ${accountStatuses}`
+				`Now has ${relatedUsers} related users - device sharing with new account ${accountStatuses}`
+				// `Device sharing with new account ${accountStatuses}`
 			);
 			first_escalation = false;
 		} else {
 			result.push(
-				// `has ${relatedUsers} related users - New device links to ${accountStatuses}`
-				`device sharing with new account ${accountStatuses}`
+				`now has ${relatedUsers} related users - device sharing with new account ${accountStatuses}`
+				// `device sharing with new account ${accountStatuses}`
 			);
 		}
 	} else {
