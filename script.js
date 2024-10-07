@@ -23,6 +23,14 @@ const noPermissionChoices = document.querySelector("#no-permission-choices");
 const nj = document.querySelector("#nj");
 const nj_options = document.querySelector("#nj-options");
 const nj_options_choices = document.querySelectorAll(".nj-option");
+const usersInitial = document.querySelector("#users-initial");
+const usersInitialDetails = document.querySelector("#users-initial-details");
+const usersInitial2 = document.querySelector("#users-initial2");
+const usersInitialDetails2 = document.querySelector("#users-initial-details2");
+const usersInitial3 = document.querySelector("#users-initial3");
+const usersInitialDetails3 = document.querySelector("#users-initial-details3");
+const noPermission2 = document.querySelector("#no-permission2");
+const noPermissionChoices2 = document.querySelector("#no-permission-choices2");
 
 const selectionDivs = document.querySelectorAll(".selection");
 const resetBtn = document.querySelector("#reset");
@@ -214,6 +222,10 @@ function getInputFieldContents(target_element) {
 
 	// Add each result to result list
 	inputElements.forEach((item) => {
+		if (item.getAttribute("data-ignore") == "ignore") {
+			return;
+		}
+
 		if (item.value !== "") {
 			result.push(item.value.trim());
 		}
@@ -245,7 +257,7 @@ function getSA1inputs() {
 	const inputElements = sa1_cards.querySelectorAll("input");
 
 	inputElements.forEach((item) => {
-		result.push(item.value);
+		result.push(item.value.trim());
 	});
 
 	return result;
@@ -286,10 +298,10 @@ function GenerateText() {
 	// Withdrawal amount more than 5k
 	if (isChecked(amount)) {
 		if (first_escalation) {
-			result.push("WD greater than $5k");
+			result.push("WD greater than $10k");
 			first_escalation = false;
 		} else {
-			result.push("WD greater than $5k");
+			result.push("WD greater than $10k");
 		}
 	}
 
@@ -425,22 +437,22 @@ function GenerateText() {
 	}
 
 	// Has 4 or more related users
-	if (isChecked(user)) {
-		user_number.style.display = "flex";
-		const input_fields_content = getInputFieldContents(user_number);
-		if (first_escalation) {
-			result.push(
-				`Account is sharing a device with (${input_fields_content}) users`
-			);
-			first_escalation = false;
-		} else {
-			result.push(
-				`account is sharing a device with (${input_fields_content}) users`
-			);
-		}
-	} else {
-		user_number.style.display = "none";
-	}
+	// if (isChecked(user)) {
+	// 	user_number.style.display = "flex";
+	// 	const input_fields_content = getInputFieldContents(user_number);
+	// 	if (first_escalation) {
+	// 		result.push(
+	// 			`Account is sharing a device with (${input_fields_content}) users`
+	// 		);
+	// 		first_escalation = false;
+	// 	} else {
+	// 		result.push(
+	// 			`account is sharing a device with (${input_fields_content}) users`
+	// 		);
+	// 	}
+	// } else {
+	// 	user_number.style.display = "none";
+	// }
 
 	// Geolocating outside US
 	if (isChecked(outside)) {
@@ -555,6 +567,89 @@ function GenerateText() {
 		}
 	} else {
 		nj_options.style.display = "none";
+	}
+
+	// Device Sharing (initial escalation)
+	if (isChecked(usersInitial)) {
+		usersInitialDetails.style.display = "flex";
+		const accountStatuses = getInputFieldContents(usersInitialDetails);
+		const relatedUsers = document
+			.querySelector("#initial-related")
+			.value.trim();
+
+		if (first_escalation) {
+			result.push(
+				`Has ${relatedUsers} related users - New device links to ${accountStatuses}`
+			);
+			first_escalation = false;
+		} else {
+			result.push(
+				`has ${relatedUsers} related users - New device links to ${accountStatuses}`
+			);
+		}
+	} else {
+		usersInitialDetails.style.display = "none";
+	}
+
+	// Device Sharing (NOT initial escalation)
+	if (isChecked(usersInitial2)) {
+		usersInitialDetails2.style.display = "flex";
+		const accountStatuses = getInputFieldContents(usersInitialDetails2);
+		// const relatedUsers = document
+		// 	.querySelector("#initial-related2")
+		// 	.value.trim();
+
+		if (first_escalation) {
+			result.push(
+				// `Has ${relatedUsers} related users - New device links to ${accountStatuses}`
+				`Device sharing with new account ${accountStatuses}`
+			);
+			first_escalation = false;
+		} else {
+			result.push(
+				// `has ${relatedUsers} related users - New device links to ${accountStatuses}`
+				`device sharing with new account ${accountStatuses}`
+			);
+		}
+	} else {
+		usersInitialDetails2.style.display = "none";
+	}
+
+	// Device Sharing 4+
+	if (isChecked(usersInitial3)) {
+		usersInitialDetails3.style.display = "flex";
+		const numOfAccounts = getInputFieldContents(usersInitialDetails3);
+		const relatedUsers = document
+			.querySelector("#initial-related3")
+			.value.trim();
+
+		if (first_escalation) {
+			result.push(
+				`Has ${relatedUsers} related users - ${numOfAccounts} accounts on devices`
+			);
+			first_escalation = false;
+		} else {
+			result.push(
+				`has ${relatedUsers} related users - ${numOfAccounts} accounts on devices`
+			);
+		}
+	} else {
+		usersInitialDetails3.style.display = "none";
+	}
+
+	// No permission to view the amelco in NATS
+	if (isChecked(noPermission2)) {
+		noPermissionChoices2.style.display = "flex";
+		const clientState = getInputFieldContents(noPermissionChoices2);
+
+		if (first_escalation) {
+			result.push(`Sharing with ${clientState} account, unable to view`);
+			first_escalation = false;
+		} else {
+			result.push(`sharing with ${clientState} account, unable to view`);
+		}
+	} else {
+		noPermissionChoices2.style.display = "none";
 	}
 
 	// Default if there's no selection/escalation checked

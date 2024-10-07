@@ -34,8 +34,27 @@
 				<p id="escalation"></p>
 			</div>
 			<div class="Selections noselect">
+				<!--  TEMPLATE:
+				
+					<div id="" class="selection">
+					<p>
+						
+					</p>
+				</div>
+				<div id="" class="additional-input">
+					<h4></h4>
+					<div class="input-fields">
+						<input type="text" placeholder="Card Number 1" />
+						<input type="text" placeholder="Card Number 2" />
+						<input type="text" placeholder="Card Number 3" />
+						<button class="addMore">Add More</button>
+					</div>
+				</div> 
+				
+				-->
+
 				<div id="amount" class="selection">
-					<p>Amount is more than $5,000</p>
+					<p>Total amount is more than $10,000</p>
 				</div>
 				<div id="suspended" class="selection">
 					<p>Account is suspended/closed</p>
@@ -118,7 +137,8 @@
 				<div id="short" class="selection">
 					<p>Has short odd bets before withdrawal</p>
 				</div>
-				<div id="user" class="selection">
+
+				<!-- <div id="user" class="selection">
 					<p>Has 4 or more related users</p>
 				</div>
 				<div id="user_number" class="additional-input">
@@ -126,7 +146,8 @@
 					<div class="input-fields">
 						<input type="text" placeholder="4" />
 					</div>
-				</div>
+				</div> -->
+
 				<div id="outside" class="selection"><p>Geo-locating outside US</p></div>
 				<div id="newloc" class="selection">
 					<p>New device in a new location</p>
@@ -185,6 +206,87 @@
 						<div id="WV" class="nj-option">
 							<p>WV</p>
 						</div>
+					</div>
+				</div>
+
+				<div id="users-initial" class="selection">
+					<p>
+						Device Sharing - If device sharing with any (not already known per
+						NATS or Sift notes) Open, Timeout, Self Exclusion, Suspended or
+						Closed Account.
+					</p>
+				</div>
+				<div id="users-initial-details" class="additional-input">
+					<h4>Number of Related Users and Accounts Details:</h4>
+					<div class="input-fields">
+						<input
+							id="initial-related"
+							type="text"
+							placeholder="Number of related users"
+							data-ignore="ignore"
+						/>
+						<input type="text" placeholder="Account number & status 1" />
+						<input type="text" placeholder="Account number & status 2" />
+						<input type="text" placeholder="Account number & status 3" />
+						<button class="addMore">Add More</button>
+					</div>
+				</div>
+
+				<div id="users-initial2" class="selection">
+					<p>
+						Device Sharing - If there's a new device on the account which is not
+						part of the previous escalation.
+					</p>
+				</div>
+				<div id="users-initial-details2" class="additional-input">
+					<h4>Accounts Details:</h4>
+					<div class="input-fields">
+						<!-- <input
+							id="initial-related2"
+							type="text"
+							placeholder="Number of related users"
+							data-ignore="ignore"
+						/> -->
+						<input type="text" placeholder="Account number & status" />
+						<button class="addMore">Add More</button>
+					</div>
+				</div>
+
+				<div id="users-initial3" class="selection">
+					<p>
+						Device Sharing - If device sharing with 4+ active, suspended, or
+						closed accounts that are not already known then do not need to
+						include account numbers in notes
+					</p>
+				</div>
+				<div id="users-initial-details3" class="additional-input">
+					<h4>Accounts Details:</h4>
+					<div class="input-fields">
+						<input
+							id="initial-related3"
+							type="text"
+							placeholder="Number of related users"
+							data-ignore="ignore"
+						/>
+						<input type="text" placeholder="Accounts on devices" />
+					</div>
+				</div>
+
+				<div id="no-permission2" class="selection">
+					<p>
+						Device Sharing - If unable to view the amelco in NATS probably NJ or
+						PA region
+					</p>
+				</div>
+				<div id="no-permission-choices2" class="additional-input">
+					<h4>Client States Info:</h4>
+					<div class="input-fields">
+						<input id="client-state" type="text" placeholder="Client State" />
+						<!-- <input
+							id="withdrawal-state"
+							type="text"
+							placeholder="Withdrawing to: (PA/WV)"
+						/> -->
 					</div>
 				</div>
 			</div>
