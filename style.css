@@ -58,6 +58,9 @@ header {
 
 main {
 	background: rgb(235, 251, 255);
+	/* background: url(./stars.jpg); */
+	background-size: cover;
+	background-attachment: fixed;
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
