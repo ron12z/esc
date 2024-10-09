@@ -69,57 +69,47 @@ function copyTextContent(event) {
 }
 
 function copyFormattedContent(event) {
+	// Default
 	// Find the <p class="text"> element within the clicked text-group
 	const textElement = event.currentTarget.querySelector("p.text");
 	const result = document.querySelector("#result");
 
+	// Main process
+	function copy(target) {
+		const htmlToCopy = target.innerHTML;
+
+		// Create a temporary element to hold the HTML
+		const tempElement = document.createElement("div");
+		tempElement.innerHTML = htmlToCopy;
+
+		// Append the temporary element to the body
+		document.body.appendChild(tempElement);
+
+		// Select the content of the temporary element
+		const selection = window.getSelection();
+		const range = document.createRange();
+		range.selectNodeContents(tempElement);
+		selection.removeAllRanges();
+		selection.addRange(range);
+
+		// Copy the selected content to the clipboard
+		document.execCommand("copy");
+
+		// Clean up: remove the temporary element and clear the selection
+		document.body.removeChild(tempElement);
+		selection.removeAllRanges();
+	}
+
+	// Default and other options to copy
 	if (textElement) {
+		copy(textElement);
 		// Get the inner HTML, which includes formatting
-		const htmlToCopy = textElement.innerHTML;
-
-		// Create a temporary element to hold the HTML
-		const tempElement = document.createElement("div");
-		tempElement.innerHTML = htmlToCopy;
-
-		// Append the temporary element to the body
-		document.body.appendChild(tempElement);
-
-		// Select the content of the temporary element
-		const selection = window.getSelection();
-		const range = document.createRange();
-		range.selectNodeContents(tempElement);
-		selection.removeAllRanges();
-		selection.addRange(range);
-
-		// Copy the selected content to the clipboard
-		document.execCommand("copy");
-
-		// Clean up: remove the temporary element and clear the selection
-		document.body.removeChild(tempElement);
-		selection.removeAllRanges();
 	} else if (event.currentTarget == result) {
-		const htmlToCopy = result.innerHTML;
-
-		// Create a temporary element to hold the HTML
-		const tempElement = document.createElement("div");
-		tempElement.innerHTML = htmlToCopy;
-
-		// Append the temporary element to the body
-		document.body.appendChild(tempElement);
-
-		// Select the content of the temporary element
-		const selection = window.getSelection();
-		const range = document.createRange();
-		range.selectNodeContents(tempElement);
-		selection.removeAllRanges();
-		selection.addRange(range);
-
-		// Copy the selected content to the clipboard
-		document.execCommand("copy");
-
-		// Clean up: remove the temporary element and clear the selection
-		document.body.removeChild(tempElement);
-		selection.removeAllRanges();
+		copy(result);
+	} else if (event.currentTarget == approveChoice1) {
+		copy(approveChoice1);
+	} else if (event.currentTarget == approveChoice2) {
+		copy(approveChoice2);
 	} else {
 		console.error("No text element found within the clicked group.");
 		// Optionally, inform the user that there's no text to copy
@@ -131,6 +121,8 @@ function showCopiedToClipboard(event) {
 
 	if (event.currentTarget == result) {
 		targetDiv = indivs;
+	} else if (event.currentTarget == approveChoice1 || approveChoice2) {
+		targetDiv = approve;
 	} else {
 		targetDiv = event.currentTarget;
 	}
@@ -248,3 +240,34 @@ function updateResult() {
 }
 updateResult();
 setInterval(updateResult, 1000);
+// --------------------------------------------------
+// Update
+// For clients with 2 or more related users but can be approved.
+const numberOfUsers = document.querySelector("#userNum");
+const approve = document.querySelector("#approve");
+const approveChoice1 = document.querySelector("#approve1");
+const approveChoice2 = document.querySelector("#approve2");
+
+// Remove eventListener for whole div
+approve.removeEventListener("click", copyFormattedContent);
+approve.removeEventListener("click", showCopiedToClipboard);
+
+// And add it only to copy-ables
+approveChoice1.addEventListener("click", copyFormattedContent);
+approveChoice1.addEventListener("click", showCopiedToClipboard);
+approveChoice2.addEventListener("click", copyFormattedContent);
+approveChoice2.addEventListener("click", showCopiedToClipboard);
+
+function fillChoices() {
+	const num = numberOfUsers.value.trim();
+
+	approveChoice1.textContent = `Has ${num} related users.  ${
+		num - 1
+	} unverified/duplicate. No fraud concerns. WD approved`;
+	approveChoice2.textContent = `Has ${num} related users, already reviewed by SA. No fraud concerns. WD approved.`;
+}
+
+document.addEventListener("click", fillChoices);
+numberOfUsers.addEventListener("keyup", fillChoices);
+fillChoices();
+setInterval(fillChoices, 1000);

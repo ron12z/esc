@@ -86,9 +86,13 @@ main {
 }
 
 #escalation::after {
-	content: " -Click to copy.";
+	content: " -Press C or Click to copy.";
 	color: black;
 	opacity: 0.5;
+}
+
+#escalation.no_content::after {
+	content: "";
 }
 
 .result,

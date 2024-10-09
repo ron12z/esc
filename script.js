@@ -145,6 +145,14 @@ function handleEscalationClick() {
 		});
 }
 
+function CtoCopy(event) {
+	if (event.key === "c" || event.key === "C") {
+		// Your code here
+		console.log('The "C" key was pressed!');
+		handleEscalationClick();
+	}
+}
+
 // Helper functions
 
 // Add Input Field Listeners to all current input fields in DOM
@@ -652,15 +660,21 @@ function GenerateText() {
 		noPermissionChoices2.style.display = "none";
 	}
 
-	// Default if there's no selection/escalation checked
 	if (!anyChecked) {
+		// Default if there's no selection/escalation checked
 		escalation.removeEventListener("click", handleEscalationClick);
+		escalation.classList.add("no_content");
+		document.removeEventListener("keydown", CtoCopy);
+
 		header.style.background = "rgb(179, 199, 223)";
 		header.style.color = "inherit";
 		escalation.style.cursor = "not-allowed";
-		return "Reviewed for Withdrawal - No Fraud Concerns";
+		return "No restrictions/escalations selected.";
 	} else {
+		// When at least one restriction is selected
 		escalation.addEventListener("click", handleEscalationClick);
+		escalation.classList.remove("no_content");
+		document.addEventListener("keydown", CtoCopy);
 		header.style.background = "rgb(255, 86, 57)";
 		header.style.color = "white";
 		escalation.style.cursor = "pointer";

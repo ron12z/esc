@@ -30,6 +30,34 @@
 		</header>
 
 		<main>
+			<div class="text-group" id="approve">
+				<h4 class="desc">
+					Has 2 or more related users but <good>can be APPROVED</good>
+				</h4>
+				<div class="text-wrapper">
+					<h5>Number of related users:</h5>
+					<input type="number" id="userNum" placeholder="2/3/4, etc" />
+					<div class="flexrow">
+						<p class="text approve" id="approve1"></p>
+						<p class="text approve" id="approve2"></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-group" id="indivs">
+				<h4 class="desc">Individual FBG Queues for posting</h4>
+				<div class="choices-wrapper">
+					<p class="text" id="result"></p>
+					<button id="miscReset">RESET</button>
+					<div class="choices">
+						<p class="choice" id="VIPNL">Vip Withdrawal- Non Licensed States</p>
+						<p class="choice" id="Cash">Withdrawal- Cash At Cage</p>
+						<p class="choice" id="IN">Withdrawals - Indiana</p>
+						<p class="choice" id="NL">Withdrawals - Non-Licensed</p>
+					</div>
+				</div>
+			</div>
+
 			<div class="text-group">
 				<h4 class="desc">
 					Withdrawal Cancellation Workflow but
@@ -62,25 +90,38 @@
 			</div>
 
 			<div class="text-group">
-				<h4 class="desc">FBG Queues <b>CLEARED</b></h4>
+				<h4 class="desc">
+					WD Cancellation <strong>(except PA, NJ, WV)</strong>:
+					WITHDRAWAL_PENDING and Payment method is CARD
+				</h4>
 				<div class="text-wrapper">
-					<p class="text" id="cleared"></p>
+					<p class="text">
+						Sorry, I can't cancel this withdrawal because it's in the status of
+						WITHDRAWAL_PENDING and the payment method is CARD. We can only
+						cancel withdrawals under status of WITHDRAWAL_PENDING if the payment
+						method is <b>Papercheck</b>
+					</p>
 				</div>
 			</div>
 
-			<div class="text-group" id="indivs">
-				<h4 class="desc">Individual FBG Queues for posting</h4>
-				<div class="choices-wrapper">
-					<p class="text" id="result"></p>
-					<button id="miscReset">RESET</button>
-					<div class="choices">
-						<!-- <p class="choice" id="VIPMI">Vip Withdrawal- Michigan</p> -->
-						<p class="choice" id="VIPNL">Vip Withdrawal- Non Licensed States</p>
-						<p class="choice" id="Cash">Withdrawal- Cash At Cage</p>
-						<p class="choice" id="IN">Withdrawals - Indiana</p>
-						<!-- <p class="choice" id="MI">Withdrawals- Michigan</p> -->
-						<p class="choice" id="NL">Withdrawals - Non-Licensed</p>
-					</div>
+			<div class="text-group">
+				<h4 class="desc">
+					WD Cancellation <strong>(except PA, NJ, WV)</strong>:
+					WITHDRAWAL_ATTENTION_REQUIRED
+				</h4>
+				<div class="text-wrapper">
+					<p class="text">
+						Sorry, this transaction cannot be cancelled as it has passed the
+						approval status and is in the status of
+						WITHDRAWAL_ATTENTION_REQUIRED. Thanks you!
+					</p>
+				</div>
+			</div>
+
+			<div class="text-group">
+				<h4 class="desc">FBG Queues <b>CLEARED</b></h4>
+				<div class="text-wrapper">
+					<p class="text" id="cleared"></p>
 				</div>
 			</div>
 		</main>
