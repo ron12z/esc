@@ -60,7 +60,7 @@ main {
 
 #result::after,
 .approve::after {
-	color: rgb(114, 98, 255);
+	color: rgb(13 96 147);
 }
 
 .desc::after {
@@ -83,7 +83,7 @@ strong {
 	color: white;
 	padding: 5px 10px;
 	border-radius: 5px;
-	z-index: 1000;
+	z-index: 0;
 	transition: opacity 0.3s;
 	opacity: 1;
 }

@@ -121,7 +121,10 @@ function showCopiedToClipboard(event) {
 
 	if (event.currentTarget == result) {
 		targetDiv = indivs;
-	} else if (event.currentTarget == approveChoice1 || approveChoice2) {
+	} else if (
+		event.currentTarget == approveChoice1 ||
+		event.currentTarget == approveChoice2
+	) {
 		targetDiv = approve;
 	} else {
 		targetDiv = event.currentTarget;
