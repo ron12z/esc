@@ -666,7 +666,7 @@ function GenerateText() {
 		escalation.classList.add("no_content");
 		document.removeEventListener("keydown", CtoCopy);
 
-		header.style.background = "rgb(179, 199, 223)";
+		header.style.background = "rgba(179, 199, 223, 1)";
 		header.style.color = "inherit";
 		escalation.style.cursor = "not-allowed";
 		return "No restrictions/escalations selected.";
@@ -675,7 +675,7 @@ function GenerateText() {
 		escalation.addEventListener("click", handleEscalationClick);
 		escalation.classList.remove("no_content");
 		document.addEventListener("keydown", CtoCopy);
-		header.style.background = "rgb(255, 86, 57)";
+		header.style.background = "rgba(255, 86, 57, 1)";
 		header.style.color = "white";
 		escalation.style.cursor = "pointer";
 	}

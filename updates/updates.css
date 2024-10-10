@@ -6,7 +6,7 @@ main {
 
 .update-group {
 	border: 1px solid black;
-	background: rgb(168, 168, 168);
+	background: rgba(168, 168, 168, 0.9);
 	display: flex;
 	flex-direction: column;
 	padding: 1rem 1rem;

@@ -25,6 +25,9 @@ body {
 	min-height: 100dvh;
 	display: flex;
 	flex-direction: column;
+	background: url(./blue2.jpg);
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 header {
@@ -57,10 +60,7 @@ header {
 }
 
 main {
-	background: rgb(235, 251, 255);
-	/* background: url(./stars.jpg); */
-	background-size: cover;
-	background-attachment: fixed;
+	/* background: rgb(235, 251, 255); */
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
@@ -71,7 +71,7 @@ main {
 
 .result {
 	position: relative;
-	background: rgb(163, 169, 199);
+	background: rgba(163, 169, 199, 0.863);
 	display: flex;
 	gap: 1rem;
 	min-height: 4rem;
@@ -117,7 +117,7 @@ main {
 .selection,
 .additional-input {
 	border-top: 1px solid black;
-	background: rgba(161, 161, 161, 0.623);
+	background: rgba(161, 161, 161, 0.938);
 	min-height: 3rem;
 	height: auto;
 	display: flex;
@@ -193,7 +193,7 @@ footer {
 	justify-content: center;
 	align-items: center;
 	padding: 1rem;
-	background: rgb(53, 53, 53);
+	background: rgba(53, 53, 53, 0.822);
 	color: white;
 }
 
