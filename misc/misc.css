@@ -47,13 +47,13 @@ main {
 
 #result {
 	min-height: 6rem;
-	background: rgb(166 239 255 / 30%);
+	background: rgb(109 193 211 / 30%);
 	border-radius: 0.5rem;
 	padding: 1rem;
 }
 
 .approve {
-	background: rgb(166 239 255 / 30%);
+	background: rgb(109 193 211 / 30%);
 	border-radius: 0.5rem;
 	padding: 1rem;
 }

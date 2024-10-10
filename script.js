@@ -666,7 +666,7 @@ function GenerateText() {
 		escalation.classList.add("no_content");
 		document.removeEventListener("keydown", CtoCopy);
 
-		header.style.background = "rgba(179, 199, 223, 1)";
+		header.style.background = "rgb(108 135 167)";
 		header.style.color = "inherit";
 		escalation.style.cursor = "not-allowed";
 		return "No restrictions/escalations selected.";
