@@ -146,21 +146,16 @@ function handleEscalationClick() {
 }
 
 function CtoCopy(event) {
+	// Don't copy when typing on input fields
+	if (event.target.tagName == "INPUT") {
+		return;
+	}
+
 	if (event.key === "c" || event.key === "C") {
 		// Your code here
 		console.log('The "C" key was pressed!');
 		handleEscalationClick();
 	}
-}
-
-// Helper functions
-// Remove Click to copy event listener to result and selection divs
-function removeCtoCopy() {
-	const allInputs = document.querySelectorAll("input");
-
-	allInputs.forEach((input) => {
-		input.removeEventListener("keydown", CtoCopy);
-	});
 }
 
 // Add Input Field Listeners to all current input fields in DOM
