@@ -247,6 +247,8 @@ setInterval(updateResult, 1000);
 // Update
 // For clients with 2 or more related users but can be approved.
 const numberOfUsers = document.querySelector("#userNum");
+const duplicate = document.querySelector("#duplicate");
+const unverified = document.querySelector("#unverified");
 const approve = document.querySelector("#approve");
 const approveChoice1 = document.querySelector("#approve1");
 const approveChoice2 = document.querySelector("#approve2");
@@ -263,11 +265,20 @@ approveChoice2.addEventListener("click", showCopiedToClipboard);
 
 function fillChoices() {
 	const num = numberOfUsers.value.trim();
+	const dups = duplicate.value.trim();
+	const unvfs = unverified.value.trim();
+	let approve1content = "";
 
-	approveChoice1.textContent = `Has ${num} related users.  ${
-		num - 1
-	} unverified/duplicate. No fraud concerns. WD approved`;
+	if (dups != "" && unvfs == "") {
+		approve1content = `Client has ${num} related users. ${dups} duplicate device links. No fraud concerns. WD approved.`;
+	} else if (dups == "" && unvfs != "") {
+		approve1content = `Client has ${num} related users. ${unvfs} unverified device links. No fraud concerns. WD approved.`;
+	} else {
+		approve1content = `Client has ${num} related users. ${dups} duplicates and ${unvfs} unverified device links. No fraud concerns. WD approved.`;
+	}
+
 	approveChoice2.textContent = `Has ${num} related users, already reviewed by SA. No fraud concerns. WD approved.`;
+	approveChoice1.textContent = approve1content;
 }
 
 document.addEventListener("click", fillChoices);

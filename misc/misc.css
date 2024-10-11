@@ -153,6 +153,12 @@ good {
 	gap: 0.2rem;
 }
 
-#userNum {
+input[type="number"] {
 	width: 20%;
+}
+
+.users-wrapper {
+	display: flex;
+	max-width: 50%;
+	gap: 0.2rem;
 }
