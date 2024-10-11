@@ -277,7 +277,7 @@ function fillChoices() {
 		approve1content = `Client has ${num} related users. ${dups} duplicates and ${unvfs} unverified device links. No fraud concerns. WD approved.`;
 	}
 
-	approveChoice2.textContent = `Has ${num} related users, already reviewed by SA. No fraud concerns. WD approved.`;
+	approveChoice2.textContent = `Client has ${num} related users, already reviewed by SA. No fraud concerns. WD approved.`;
 	approveChoice1.textContent = approve1content;
 }
 
