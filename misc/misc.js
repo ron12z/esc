@@ -282,6 +282,6 @@ function fillChoices() {
 }
 
 document.addEventListener("click", fillChoices);
-numberOfUsers.addEventListener("keyup", fillChoices);
+document.addEventListener("keyup", fillChoices);
 fillChoices();
 setInterval(fillChoices, 1000);
