@@ -252,6 +252,7 @@ const unverified = document.querySelector("#unverified");
 const approve = document.querySelector("#approve");
 const approveChoice1 = document.querySelector("#approve1");
 const approveChoice2 = document.querySelector("#approve2");
+const resetUsers = document.querySelector("#resetUsers");
 
 // Remove eventListener for whole div
 approve.removeEventListener("click", copyFormattedContent);
@@ -280,6 +281,15 @@ function fillChoices() {
 	approveChoice2.textContent = `Client has ${num} related users, already reviewed by SA. No fraud concerns. WD approved.`;
 	approveChoice1.textContent = approve1content;
 }
+
+resetUsers.addEventListener("click", function (event) {
+	const wrapper = document.querySelector(".users-wrapper");
+	const userInputs = wrapper.querySelectorAll("input");
+
+	userInputs.forEach((input) => {
+		input.value = "";
+	});
+});
 
 document.addEventListener("click", fillChoices);
 document.addEventListener("keyup", fillChoices);
