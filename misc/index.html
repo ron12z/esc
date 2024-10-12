@@ -63,10 +63,12 @@
 					<p class="text" id="result"></p>
 					<button id="miscReset">RESET</button>
 					<div class="choices">
+						<p class="choice" id="VIPL">Vip Withdrawal- Licensed States</p>
 						<p class="choice" id="VIPNL">Vip Withdrawal- Non Licensed States</p>
 						<p class="choice" id="Cash">Withdrawal- Cash At Cage</p>
 						<p class="choice" id="IN">Withdrawals - Indiana</p>
 						<p class="choice" id="NL">Withdrawals - Non-Licensed</p>
+						<p class="choice" id="PA">Withdrawals - Pennsylvania</p>
 					</div>
 				</div>
 			</div>
@@ -116,10 +118,11 @@
 				</h4>
 				<div class="text-wrapper">
 					<p class="text">
-						Sorry, I can't cancel this withdrawal because it's in the status of
-						WITHDRAWAL_PENDING and the payment method is CARD. We can only
-						cancel withdrawals under status of WITHDRAWAL_PENDING if the payment
-						method is <b>Papercheck</b>
+						Sorry, this transaction cannot be cancelled because it's in the
+						status of
+						<b>WITHDRAWAL_PENDING</b> and the payment method is <b>CARD</b>. We
+						can only cancel withdrawals under status of WITHDRAWAL_PENDING if
+						the payment method is <em><b>Papercheck</b></em>
 					</p>
 				</div>
 			</div>
@@ -131,9 +134,36 @@
 				</h4>
 				<div class="text-wrapper">
 					<p class="text">
-						Sorry, this transaction cannot be cancelled as it has passed the
-						approval status and is in the status of
-						WITHDRAWAL_ATTENTION_REQUIRED. Thanks you!
+						Sorry, this transaction cannot be cancelled as it had already passed
+						the approval status and is now in the status of
+						<b>WITHDRAWAL_ATTENTION_REQUIRED</b>. Thank you!
+					</p>
+				</div>
+			</div>
+
+			<div class="text-group">
+				<h4 class="desc">
+					WD Cancellation <strong>(except PA, NJ, WV)</strong>:
+					WITHDRAWAL_COMPLETED
+				</h4>
+				<div class="text-wrapper">
+					<p class="text">
+						Sorry, we cannot cancel this transaction because it's already in the
+						status of <b>WITHDRAWAL_COMPLETED</b>.
+					</p>
+				</div>
+			</div>
+
+			<div class="text-group">
+				<h4 class="desc">
+					WD Cancellation <strong>(except PA, NJ, WV)</strong>:
+					WITHDRAWAL_ATTENTION_REQUIRED
+				</h4>
+				<div class="text-wrapper">
+					<p class="text">
+						Unfortunately, we are unable to cancel this on our end, as it has
+						moved past the approval status and is now in the
+						<b>WITHDRAWAL_ATTENTION_REQUIRED</b> status.
 					</p>
 				</div>
 			</div>
@@ -145,9 +175,12 @@
 				<div class="text-wrapper">
 					<p class="text">
 						Hi, it looks like this is related to a refund. Please note that this
-						workflow is specifically for Withdrawal Cancellation Requests. I
-						recommend escalating the issue to the Payments Team for the
-						appropriate assistance.
+						workflow is specifically for
+						<b>Withdrawal Cancellation Requests</b>. Deposit refund is for
+						Payments Team. However, you can post this on a new thread without
+						using the cancellation workflow so that our US Counterpart can check
+						this and provide appropriate course of action for your concern.
+						Thank you!
 					</p>
 				</div>
 			</div>

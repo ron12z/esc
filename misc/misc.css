@@ -169,7 +169,7 @@ input[type="number"] {
 	box-shadow: inset 0px 1px 0px 0px #ffffff;
 	/* background: linear-gradient(to bottom, #fabfaf 5%, #ff775c 100%); */
 	background: #ff9d8a;
-	border-radius: 3px;
+	border-radius: 5px;
 	border: 1px solid #f55e3f;
 	display: inline-block;
 	cursor: pointer;

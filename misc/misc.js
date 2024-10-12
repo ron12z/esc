@@ -163,6 +163,8 @@ const Cash = document.querySelector("#Cash");
 const IN = document.querySelector("#IN");
 const MI = document.querySelector("#MI");
 const NL = document.querySelector("#NL");
+const PA = document.querySelector("#PA");
+const VIPL = document.querySelector("#VIPL");
 
 // Remove eventListener for this specific group
 indivs.removeEventListener("click", copyFormattedContent);
@@ -211,6 +213,10 @@ function GenerateText() {
 	// 	output += `Vip Withdrawal - Michigan${cleared}`;
 	// }
 
+	if (isChecked(VIPL)) {
+		output += `Vip Withdrawal- Licensed States${cleared}`;
+	}
+
 	if (isChecked(VIPNL)) {
 		output += `Vip Withdrawal - Non Licensed States${cleared}`;
 	}
@@ -229,6 +235,10 @@ function GenerateText() {
 
 	if (isChecked(NL)) {
 		output += `Withdrawals - Non-Licensed States${cleared}`;
+	}
+
+	if (isChecked(PA)) {
+		output += `Withdrawals - Pennsylvania${cleared}`;
 	}
 
 	if (!anyChecked) {
