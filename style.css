@@ -248,7 +248,8 @@ button.addMore:hover {
 }
 
 .option,
-.nj-option {
+.nj-option,
+.amount-option {
 	background: rgb(196, 196, 196);
 	border: 1px solid black;
 	padding: 0.4rem 0.5rem;
@@ -256,10 +257,6 @@ button.addMore:hover {
 	font-size: 1rem;
 	min-width: 4rem;
 	text-align: center;
-}
-
-.option,
-.nj-option {
 	cursor: pointer;
 }
 

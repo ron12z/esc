@@ -3,6 +3,8 @@ const result = document.querySelector(".result");
 const escalation = document.querySelector("#escalation");
 const options = document.querySelectorAll(".option");
 const amount = document.querySelector("#amount");
+const amount_options = document.querySelector("#amount-options");
+const amount_options_choices = document.querySelectorAll(".amount-option");
 const suspended = document.querySelector("#suspended");
 const name1 = document.querySelector("#name");
 const email = document.querySelector("#email");
@@ -192,6 +194,18 @@ nj_options_choices.forEach((option) => {
 	});
 });
 
+// Add event listeners to each "amount-option" div
+amount_options_choices.forEach((option) => {
+	option.addEventListener("click", () => {
+		// Remove "checked" from all amount_options_choices
+		amount_options_choices.forEach((opt) => opt.classList.remove("checked"));
+
+		// Add "checked" to the clicked option
+		option.classList.add("checked");
+		updateResult();
+	});
+});
+
 // Toggle QR visibility
 showQR.addEventListener("click", () => {
 	if (donateInfo.style.display === "none") {
@@ -308,12 +322,24 @@ function GenerateText() {
 
 	// Withdrawal amount more than 5k
 	if (isChecked(amount)) {
+		amount_options.style.display = "flex";
+		let threshold = "";
+		const isVIP = document.querySelector("#isVIP");
+
+		if (isVIP.classList.contains("checked")) {
+			threshold = "$25k";
+		} else {
+			threshold = "$24,999.99";
+		}
+
 		if (first_escalation) {
-			result.push("WD greater than $10k");
+			result.push(`WD greater than ${threshold}`);
 			first_escalation = false;
 		} else {
-			result.push("WD greater than $10k");
+			result.push(`WD greater than ${threshold}`);
 		}
+	} else {
+		amount_options.style.display = "none";
 	}
 
 	// Account is closed/suspended
