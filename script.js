@@ -276,18 +276,6 @@ function getInputFieldContents(target_element) {
 	}
 }
 
-// Specific for SA1 input since it has fixed 2 inputs needed, and would also be used separately.
-function getSA1inputs() {
-	const result = [];
-	const inputElements = sa1_cards.querySelectorAll("input");
-
-	inputElements.forEach((item) => {
-		result.push(item.value.trim());
-	});
-
-	return result;
-}
-
 // For updating DOM
 function updateResult() {
 	escalation.textContent = GenerateText();
@@ -418,16 +406,17 @@ function GenerateText() {
 	// Suspicious Activity 1
 	if (isChecked(sa1)) {
 		sa1_cards.style.display = "flex";
-		const sa1_card_details = getSA1inputs();
+		const withdrawal_card = document.querySelector("#sa1_card1").value.trim();
+		const largerCards = getInputFieldContents(sa1_cards);
 
 		if (first_escalation) {
 			result.push(
-				`withdrawing to a payment method (${sa1_card_details[0]}) used for a small deposit with larger deposits made with (${sa1_card_details[1]})`
+				`withdrawing to a payment method (${withdrawal_card}) used for a small deposit with larger deposits made with (${largerCards})`
 			);
 			first_escalation = false;
 		} else {
 			result.push(
-				`withdrawing to a payment method (${sa1_card_details[0]}) used for a small deposit with larger deposits made with (${sa1_card_details[1]})`
+				`withdrawing to a payment method (${withdrawal_card}) used for a small deposit with larger deposits made with (${largerCards})`
 			);
 		}
 	} else {
